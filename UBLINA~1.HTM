@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>#workspace — ublination</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FEFBE8;
+  --black:#0D0D0D;
+  --grad:linear-gradient(90deg,#E8185C,#F7931E);
+  --pink:#E8185C;
+  --orange:#F7931E;
+  --border:#E0DCC8;
+  --muted:#555;
+}
+body{font-family:'Arial Black',Arial,sans-serif;background:var(--cream);color:var(--black);min-height:100vh;padding:24px}
+
+.grad-bar{height:5px;background:var(--grad);border-radius:99px;margin-bottom:1.5rem}
+
+/* HEADER */
+.ws-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:10px}
+.brand{font-size:20px;font-weight:900;letter-spacing:-0.5px;text-transform:uppercase}
+.brand span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn-grad{padding:9px 18px;border-radius:99px;border:none;background:var(--grad);color:#fff;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
+.btn-grad:hover{opacity:0.88}
+.btn-outline{padding:8px 16px;border-radius:99px;border:2px solid var(--black);background:transparent;color:var(--black);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer}
+.btn-outline:hover{background:var(--black);color:var(--cream)}
+
+/* SECTION */
+.section-block{margin-bottom:2rem}
+.section-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--border)}
+
+/* EQUIPE */
+.equipe-card{background:var(--black);border-radius:16px;overflow:hidden}
+.eq-head{padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.eq-head-title{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#fff}
+.eq-table{width:100%;border-collapse:collapse}
+.eq-table th{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:#666;padding:8px 20px;border-bottom:1px solid #222;text-align:left}
+.eq-table td{padding:11px 20px;font-size:13px;color:#fff;border-bottom:1px solid #1a1a1a;vertical-align:middle;font-family:Arial,sans-serif;font-weight:400}
+.eq-table tr:last-child td{border-bottom:none}
+.eq-table tr:hover td{background:#161616}
+.person-pill{display:inline-block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;padding:3px 10px;border-radius:99px}
+.pA{background:linear-gradient(90deg,#E8185C,#F7931E);color:#fff}
+.pB{background:#fff;color:#0D0D0D}
+.pC{background:transparent;color:#E8185C;border:1px solid #E8185C}
+.due-ok{font-size:11px;padding:3px 8px;border-radius:99px;background:#1a2a1a;color:#4CAF50;font-family:Arial,sans-serif;font-weight:700}
+.due-soon{font-size:11px;padding:3px 8px;border-radius:99px;background:#2a1a00;color:#F7931E;font-family:Arial,sans-serif;font-weight:700}
+.due-late{font-size:11px;padding:3px 8px;border-radius:99px;background:#2a0a0a;color:#E8185C;font-family:Arial,sans-serif;font-weight:700}
+.eq-status-sel{background:#111;border:1px solid #333;color:#ccc;font-size:11px;padding:3px 8px;border-radius:99px;font-family:Arial,sans-serif;cursor:pointer}
+.del-eq{background:none;border:none;color:transparent;cursor:pointer;font-size:14px;padding:0 2px}
+tr:hover .del-eq{color:#555}
+.eq-add-area{padding:12px 20px;border-top:1px solid #222;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.eq-inp{flex:1;min-width:130px;padding:8px 12px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:13px;font-family:Arial,sans-serif}
+.eq-inp::placeholder{color:#555}
+.eq-sel{padding:8px 9px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:12px;font-family:Arial,sans-serif}
+.eq-date{padding:8px 9px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:12px;font-family:Arial,sans-serif}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.client-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden}
+.card-head{padding:13px 18px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.card-name{font-size:14px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em}
+.icon-btn{background:none;border:none;cursor:pointer;color:#bbb;font-size:16px;padding:2px;line-height:1}
+.icon-btn:hover{color:var(--black)}
+.relembrete{margin:12px 18px 4px;border-radius:10px;padding:10px 13px;cursor:pointer;border-left:3px solid var(--pink);background:#FFF5F8}
+.rem-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;color:var(--pink);margin-bottom:3px}
+.rem-text{font-size:12px;color:#333;font-family:Arial,sans-serif;font-weight:400;line-height:1.5;font-style:italic}
+.rem-empty{font-size:12px;color:#E8185C88;font-family:Arial,sans-serif}
+.tasks-area{padding:4px 18px 8px}
+.task-row{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid #F0EDE0}
+.task-row:last-child{border-bottom:none}
+.status-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.dot-todo{background:#ccc}
+.dot-doing{background:var(--orange)}
+.dot-done{background:#4CAF50}
+.task-info{flex:1;min-width:0}
+.task-name-el{font-size:13px;font-weight:700;color:var(--black);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:Arial,sans-serif}
+.task-name-el:hover{color:var(--pink)}
+.task-meta{display:flex;align-items:center;gap:5px;margin-top:3px;flex-wrap:wrap}
+.tbadge{font-size:10px;font-weight:900;text-transform:uppercase;padding:2px 8px;border-radius:99px;letter-spacing:0.03em}
+.tb-feed{background:#fff0e0;color:#c06000}
+.tb-stories{background:#f0e0ff;color:#6000c0}
+.tb-reels{background:#ffe0f0;color:#c0006b}
+.tb-publi{background:#e0f0ff;color:#0060c0}
+.tb-edicao{background:#e0ffe8;color:#007030}
+.tb-copy{background:#fff8e0;color:#a07000}
+.tb-coord{background:#ffe8e0;color:#c03000}
+.tb-outro{background:#f0f0f0;color:#555}
+.status-sel{padding:2px 7px;border-radius:99px;border:1px solid #ddd;background:#f8f8f8;color:#555;font-size:10px;font-family:Arial,sans-serif;cursor:pointer;font-weight:700;text-transform:uppercase}
+.note-inline{font-size:11px;color:#aaa;font-style:italic;font-family:Arial,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:150px}
+.task-del{background:none;border:none;color:transparent;cursor:pointer;font-size:13px;padding:0 0 0 2px}
+.task-row:hover .task-del{color:#ccc}
+.empty-msg{font-size:12px;color:#bbb;text-align:center;padding:16px 0;font-family:Arial,sans-serif}
+.add-row{padding:10px 18px;display:flex;gap:7px;background:#FAFAF5;border-top:1px solid var(--border)}
+.add-inp{flex:1;padding:7px 11px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--black);font-size:13px;font-family:Arial,sans-serif}
+.add-inp::placeholder{color:#bbb}
+.add-sel{padding:7px 8px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--black);font-size:11px;font-family:Arial,sans-serif;font-weight:700;text-transform:uppercase}
+.add-btn{padding:7px 13px;border-radius:8px;border:none;background:var(--grad);color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;white-space:nowrap}
+.add-btn:hover{opacity:0.88}
+
+/* MODALS */
+.modal-bg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:16px;padding:1.5rem;width:360px;max-width:94vw;border-top:4px solid transparent;border-image:linear-gradient(90deg,#E8185C,#F7931E) 1}
+.modal h3{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1.1rem}
+.field{margin-bottom:11px}
+.field label{display:block;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-bottom:4px}
+.field input,.field select,.field textarea{width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);color:var(--black);font-size:13px;font-family:Arial,sans-serif;background:#fff}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--pink)}
+.field textarea{resize:vertical;min-height:64px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:1.1rem}
+.m-cancel{padding:8px 16px;border-radius:8px;border:1.5px solid var(--border);background:transparent;color:#888;font-size:12px;font-weight:900;text-transform:uppercase;cursor:pointer}
+.m-cancel:hover{border-color:#aaa}
+.m-save{padding:8px 18px;border-radius:8px;border:none;background:var(--grad);color:#fff;font-size:12px;font-weight:900;text-transform:uppercase;cursor:pointer}
+.m-save:hover{opacity:0.88}
+.del-client-btn{padding:6px 12px;border-radius:8px;border:1.5px solid #ffcccc;background:transparent;color:var(--pink);font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:5px}
+.del-client-btn:hover{background:#fff0f3}
+</style>
+</head>
+<body>
+
+<div class="grad-bar"></div>
+
+<div class="ws-header">
+  <div class="brand">#<span>workspace</span></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <button class="btn-outline" onclick="openAddPerson()">+ Pessoa</button>
+    <button class="btn-grad" onclick="openNewClient()">+ Cliente</button>
+  </div>
+</div>
+
+<!-- EQUIPE -->
+<div class="section-block">
+  <div class="section-title">Minha equipe</div>
+  <div class="equipe-card">
+    <div class="eq-head">
+      <span class="eq-head-title">Delegações</span>
+    </div>
+    <table class="eq-table">
+      <thead><tr>
+        <th style="width:100px">Pessoa</th>
+        <th>O que pedi</th>
+        <th style="width:80px">Entrega</th>
+        <th style="width:110px">Status</th>
+        <th style="width:24px"></th>
+      </tr></thead>
+      <tbody id="eq-body"></tbody>
+    </table>
+    <div class="eq-add-area">
+      <select class="eq-sel" id="eq-person-sel" style="min-width:90px"></select>
+      <input class="eq-inp" id="eq-pedido-inp" placeholder="O que você pediu..." />
+      <input class="eq-date" id="eq-date-inp" type="date" />
+      <button class="btn-grad" onclick="quickAddEq()">+ Add</button>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTES -->
+<div class="section-block">
+  <div class="section-title">Clientes</div>
+  <div class="cards-grid" id="cards-grid"></div>
+</div>
+
+<div class="grad-bar" style="margin-top:1rem"></div>
+
+<!-- MODALS -->
+<div class="modal-bg" id="task-modal">
+  <div class="modal">
+    <h3 id="tm-title">Editar tarefa</h3>
+    <div class="field"><label>Título</label><input id="tm-name" /></div>
+    <div class="field"><label>Tipo</label>
+      <select id="tm-type">
+        <option value="feed">Feed</option>
+        <option value="stories">Stories</option>
+        <option value="reels">Reels</option>
+        <option value="publi">Publi</option>
+        <option value="edicao">Edição de vídeo</option>
+        <option value="copy">Copy / Legenda</option>
+        <option value="coord">Coordenação / Equipe</option>
+        <option value="outro">Outro</option>
+      </select>
+    </div>
+    <div class="field"><label>Status</label>
+      <select id="tm-status">
+        <option value="todo">A fazer</option>
+        <option value="doing">Em andamento</option>
+        <option value="done">Concluído</option>
+      </select>
+    </div>
+    <div class="field"><label>Onde parei / obs.</label><textarea id="tm-note" placeholder="Descreva onde parou ou o que falta..."></textarea></div>
+    <div class="modal-actions">
+      <button class="m-cancel" onclick="closeModal('task-modal')">Cancelar</button>
+      <button class="m-save" onclick="saveTaskModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="rem-modal">
+  <div class="modal">
+    <h3>Relembrete</h3>
+    <div class="field"><label>O que você fez por último nesse cliente?</label><textarea id="rem-text" style="min-height:90px" placeholder="Ex: Postei o feed de segunda, agendei os stories da semana, falta aprovar o reels..."></textarea></div>
+    <div class="modal-actions">
+      <button class="m-cancel" onclick="closeModal('rem-modal')">Cancelar</button>
+      <button class="m-save" onclick="saveRemModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="client-modal">
+  <div class="modal">
+    <h3 id="cm-title">Novo cliente</h3>
+    <div class="field"><label>Nome do cliente</label><input id="cm-name" placeholder="Ex: Boutique da Ana" /></div>
+    <div id="cm-del-area"></div>
+    <div class="modal-actions">
+      <button class="m-cancel" onclick="closeModal('client-modal')">Cancelar</button>
+      <button class="m-save" onclick="saveClientModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="person-modal">
+  <div class="modal">
+    <h3 id="pm-title">Nova pessoa</h3>
+    <div class="field"><label>Nome</label><input id="pm-name" placeholder="Ex: Julia" /></div>
+    <div id="pm-del-area"></div>
+    <div class="modal-actions">
+      <button class="m-cancel" onclick="closeModal('person-modal')">Cancelar</button>
+      <button class="m-save" onclick="savePersonModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="eq-modal">
+  <div class="modal">
+    <h3>Editar delegação</h3>
+    <div class="field"><label>Pessoa</label><select id="em-person"></select></div>
+    <div class="field"><label>O que você pediu</label><textarea id="em-pedido" style="min-height:64px"></textarea></div>
+    <div class="field"><label>Data de entrega</label><input id="em-date" type="date" /></div>
+    <div class="field"><label>Status</label>
+      <select id="em-status">
+        <option value="aguardando">Aguardando</option>
+        <option value="andamento">Em andamento</option>
+        <option value="entregue">Entregue</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button class="m-cancel" onclick="closeModal('eq-modal')">Cancelar</button>
+      <button class="m-save" onclick="saveEqModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TYPES={
+  feed:{label:'Feed',cls:'tb-feed'},
+  stories:{label:'Stories',cls:'tb-stories'},
+  reels:{label:'Reels',cls:'tb-reels'},
+  publi:{label:'Publi',cls:'tb-publi'},
+  edicao:{label:'Edição',cls:'tb-edicao'},
+  copy:{label:'Copy',cls:'tb-copy'},
+  coord:{label:'Coord.',cls:'tb-coord'},
+  outro:{label:'Outro',cls:'tb-outro'}
+};
+const DOT={todo:'dot-todo',doing:'dot-doing',done:'dot-done'};
+const PCLS=['pA','pB','pC','pA'];
+
+let data={
+  persons:[],
+  delegacoes:[],
+  clients:[],
+  tasks:[]
+};
+let nid=100;
+let editingTask=null,editingClient=null,editingPerson=null,editingEq=null,remClient=null;
+
+function persist(){
+  try{localStorage.setItem('ubws_v1',JSON.stringify({data,nid}));}catch(e){}
+}
+function hydrate(){
+  try{
+    const s=localStorage.getItem('ubws_v1');
+    if(s){const p=JSON.parse(s);data=p.data;nid=p.nid||100;}
+  }catch(e){}
+}
+hydrate();
+
+function closeModal(id){document.getElementById(id).classList.remove('open')}
+function openModal(id){document.getElementById(id).classList.add('open')}
+
+function pCls(pid){const idx=data.persons.findIndex(p=>p.id===pid);return PCLS[Math.max(0,idx)%PCLS.length]}
+function pName(pid){const p=data.persons.find(x=>x.id===pid);return p?p.name:'?'}
+function dueCls(d){
+  if(!d)return '';
+  const diff=Math.ceil((new Date(d)-new Date())/(864e5));
+  return diff<0?'due-late':diff<=3?'due-soon':'due-ok';
+}
+function fmtDate(d){
+  if(!d)return '';
+  const[y,m,dd]=d.split('-');return `${dd}/${m}`;
+}
+
+/* ===== EQUIPE ===== */
+function renderEq(){
+  const sel=document.getElementById('eq-person-sel');
+  sel.innerHTML=data.persons.length
+    ? data.persons.map(p=>`<option value="${p.id}">${p.name}</option>`).join('')
+    : '<option value="">— adicione uma pessoa —</option>';
+
+  const body=document.getElementById('eq-body');
+  if(!data.delegacoes.length){
+    body.innerHTML=`<tr><td colspan="5" style="text-align:center;color:#555;font-size:12px;padding:18px;font-family:Arial,sans-serif">Nenhuma delegação ainda</td></tr>`;
+    return;
+  }
+  body.innerHTML=data.delegacoes.map(d=>`
+    <tr style="cursor:pointer" onclick="openEditEq('${d.id}')">
+      <td><span class="person-pill ${pCls(d.person)}">${pName(d.person)}</span></td>
+      <td style="font-family:Arial,sans-serif">${d.pedido}</td>
+      <td>${d.date?`<span class="${dueCls(d.date)}">${fmtDate(d.date)}</span>`:''}</td>
+      <td>
+        <select class="eq-status-sel" onclick="event.stopPropagation()" onchange="changeEqStatus('${d.id}',this.value)">
+          <option value="aguardando"${d.status==='aguardando'?' selected':''}>Aguardando</option>
+          <option value="andamento"${d.status==='andamento'?' selected':''}>Em andamento</option>
+          <option value="entregue"${d.status==='entregue'?' selected':''}>Entregue</option>
+        </select>
+      </td>
+      <td><button class="del-eq" onclick="event.stopPropagation();delEq('${d.id}')" title="Remover">✕</button></td>
+    </tr>`).join('');
+}
+
+function changeEqStatus(eid,status){
+  const d=data.delegacoes.find(x=>x.id===eid);
+  if(d){d.status=status;persist();}
+}
+
+function quickAddEq(){
+  const pid=document.getElementById('eq-person-sel').value;
+  const pedido=document.getElementById('eq-pedido-inp').value.trim();
+  const date=document.getElementById('eq-date-inp').value;
+  if(!pid||!pedido)return;
+  data.delegacoes.push({id:'d'+(nid++),person:pid,pedido,date,status:'aguardando'});
+  document.getElementById('eq-pedido-inp').value='';
+  document.getElementById('eq-date-inp').value='';
+  persist();renderEq();
+}
+
+function openEditEq(eid){
+  const d=data.delegacoes.find(x=>x.id===eid);if(!d)return;
+  editingEq=eid;
+  const sel=document.getElementById('em-person');
+  sel.innerHTML=data.persons.map(p=>`<option value="${p.id}"${p.id===d.person?' selected':''}>${p.name}</option>`).join('');
+  document.getElementById('em-pedido').value=d.pedido;
+  document.getElementById('em-date').value=d.date||'';
+  document.getElementById('em-status').value=d.status;
+  openModal('eq-modal');
+}
+
+function saveEqModal(){
+  const d=data.delegacoes.find(x=>x.id===editingEq);
+  if(d){
+    d.person=document.getElementById('em-person').value;
+    d.pedido=document.getElementById('em-pedido').value.trim();
+    d.date=document.getElementById('em-date').value;
+    d.status=document.getElementById('em-status').value;
+  }
+  persist();closeModal('eq-modal');renderEq();
+}
+
+function delEq(eid){
+  if(!confirm('Remover esta delegação?'))return;
+  data.delegacoes=data.delegacoes.filter(x=>x.id!==eid);
+  persist();renderEq();
+}
+
+/* ===== PESSOAS ===== */
+function openAddPerson(){
+  editingPerson=null;
+  document.getElementById('pm-title').textContent='Nova pessoa';
+  document.getElementById('pm-name').value='';
+  document.getElementById('pm-del-area').innerHTML='';
+  openModal('person-modal');
+  setTimeout(()=>document.getElementById('pm-name').focus(),50);
+}
+
+function savePersonModal(){
+  const name=document.getElementById('pm-name').value.trim();if(!name)return;
+  if(editingPerson){
+    const p=data.persons.find(x=>x.id===editingPerson);if(p)p.name=name;
+  } else {
+    data.persons.push({id:'p'+(nid++),name});
+  }
+  persist();closeModal('person-modal');renderEq();renderClients();
+}
+
+/* ===== CLIENTES ===== */
+function renderClients(){
+  const grid=document.getElementById('cards-grid');
+  if(!data.clients.length){
+    grid.innerHTML=`<div style="font-size:13px;color:#bbb;font-family:Arial,sans-serif;padding:20px 0">Clique em "+ Cliente" para começar.</div>`;
+    return;
+  }
+  grid.innerHTML=data.clients.map(c=>{
+    const tasks=data.tasks.filter(t=>t.client===c.id);
+    return `<div class="client-card">
+      <div class="card-head">
+        <span class="card-name">${c.name}</span>
+        <button class="icon-btn" onclick="openEditClient('${c.id}')" title="Editar cliente">✎</button>
+      </div>
+      <div class="relembrete" onclick="openRem('${c.id}')">
+        <div class="rem-label">● Relembrete</div>
+        ${c.relembrete
+          ? `<div class="rem-text">${c.relembrete}</div>`
+          : `<div class="rem-empty">Clique para registrar o que fez por último</div>`}
+      </div>
+      <div class="tasks-area">
+        ${tasks.length
+          ? tasks.map(t=>`<div class="task-row">
+              <div class="status-dot ${DOT[t.status]}"></div>
+              <div class="task-info">
+                <div class="task-name-el" onclick="openEditTask('${t.id}')">${t.name}</div>
+                <div class="task-meta">
+                  <span class="tbadge ${TYPES[t.type].cls}">${TYPES[t.type].label}</span>
+                  <select class="status-sel" onchange="changeStatus('${t.id}',this.value)">
+                    <option value="todo"${t.status==='todo'?' selected':''}>A fazer</option>
+                    <option value="doing"${t.status==='doing'?' selected':''}>Em andamento</option>
+                    <option value="done"${t.status==='done'?' selected':''}>Concluído</option>
+                  </select>
+                  ${t.note?`<span class="note-inline" title="${t.note}">${t.note}</span>`:''}
+                </div>
+              </div>
+              <button class="task-del" onclick="delTask('${t.id}')" title="Remover">✕</button>
+            </div>`).join('')
+          : `<div class="empty-msg">Nenhuma tarefa ainda</div>`}
+      </div>
+      <div class="add-row">
+        <input class="add-inp" id="qi-${c.id}" placeholder="Nova tarefa..." onkeydown="if(event.key==='Enter')quickAdd('${c.id}')" />
+        <select class="add-sel" id="qt-${c.id}">
+          ${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}
+        </select>
+        <button class="add-btn" onclick="quickAdd('${c.id}')">+ Add</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function quickAdd(cid){
+  const inp=document.getElementById('qi-'+cid);
+  const name=inp.value.trim();if(!name)return;
+  data.tasks.push({id:'t'+(nid++),client:cid,name,type:document.getElementById('qt-'+cid).value,status:'todo',note:''});
+  inp.value='';persist();renderClients();
+}
+
+function changeStatus(tid,status){
+  const t=data.tasks.find(x=>x.id===tid);if(t){t.status=status;persist();}renderClients();
+}
+
+function delTask(tid){
+  if(!confirm('Remover esta tarefa?'))return;
+  data.tasks=data.tasks.filter(x=>x.id!==tid);persist();renderClients();
+}
+
+function openEditTask(tid){
+  const t=data.tasks.find(x=>x.id===tid);if(!t)return;
+  editingTask=tid;
+  document.getElementById('tm-title').textContent='Editar tarefa';
+  document.getElementById('tm-name').value=t.name;
+  document.getElementById('tm-type').value=t.type;
+  document.getElementById('tm-status').value=t.status;
+  document.getElementById('tm-note').value=t.note||'';
+  openModal('task-modal');
+}
+
+function saveTaskModal(){
+  const name=document.getElementById('tm-name').value.trim();if(!name)return;
+  const t=data.tasks.find(x=>x.id===editingTask);
+  if(t){t.name=name;t.type=document.getElementById('tm-type').value;t.status=document.getElementById('tm-status').value;t.note=document.getElementById('tm-note').value.trim();}
+  persist();closeModal('task-modal');renderClients();
+}
+
+function openRem(cid){
+  remClient=cid;
+  const c=data.clients.find(x=>x.id===cid);
+  document.getElementById('rem-text').value=c?c.relembrete||'':'';
+  openModal('rem-modal');
+  setTimeout(()=>document.getElementById('rem-text').focus(),50);
+}
+
+function saveRemModal(){
+  const c=data.clients.find(x=>x.id===remClient);
+  if(c)c.relembrete=document.getElementById('rem-text').value.trim();
+  persist();closeModal('rem-modal');renderClients();
+}
+
+function openNewClient(){
+  editingClient=null;
+  document.getElementById('cm-title').textContent='Novo cliente';
+  document.getElementById('cm-name').value='';
+  document.getElementById('cm-del-area').innerHTML='';
+  openModal('client-modal');
+  setTimeout(()=>document.getElementById('cm-name').focus(),50);
+}
+
+function openEditClient(cid){
+  editingClient=cid;
+  const c=data.clients.find(x=>x.id===cid);
+  document.getElementById('cm-title').textContent='Editar cliente';
+  document.getElementById('cm-name').value=c?c.name:'';
+  document.getElementById('cm-del-area').innerHTML=`<button class="del-client-btn" onclick="delClient('${cid}')">🗑 Remover cliente</button>`;
+  openModal('client-modal');
+}
+
+function saveClientModal(){
+  const name=document.getElementById('cm-name').value.trim();if(!name)return;
+  if(editingClient){
+    const c=data.clients.find(x=>x.id===editingClient);if(c)c.name=name;
+  } else {
+    data.clients.push({id:'c'+(nid++),name,relembrete:''});
+  }
+  persist();closeModal('client-modal');renderClients();
+}
+
+function delClient(cid){
+  if(!confirm('Remover este cliente e todas as tarefas?'))return;
+  data.clients=data.clients.filter(x=>x.id!==cid);
+  data.tasks=data.tasks.filter(x=>x.client!==cid);
+  persist();closeModal('client-modal');renderClients();
+}
+
+['task-modal','rem-modal','client-modal','person-modal','eq-modal'].forEach(id=>{
+  document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')
+    ['task-modal','rem-modal','client-modal','person-modal','eq-modal'].forEach(id=>document.getElementById(id).classList.remove('open'));
+});
+
+renderEq();
+renderClients();
+</script>
+</body>
+</html>
