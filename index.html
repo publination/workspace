@@ -16,9 +16,7 @@
   --muted:#555;
 }
 body{font-family:'Arial Black',Arial,sans-serif;background:var(--cream);color:var(--black);min-height:100vh;padding:24px}
-
 .grad-bar{height:5px;background:var(--grad);border-radius:99px;margin-bottom:1.5rem}
-
 .ws-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:10px}
 .brand{font-size:20px;font-weight:900;letter-spacing:-0.5px;text-transform:uppercase}
 .brand span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -35,12 +33,9 @@ body{font-family:'Arial Black',Arial,sans-serif;background:var(--cream);color:va
 .btn-outline:hover{background:var(--black);color:var(--cream)}
 .btn-cfg{padding:7px 13px;border-radius:99px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;font-family:Arial,sans-serif}
 .btn-cfg:hover{border-color:var(--black);color:var(--black)}
-
 .section-block{margin-bottom:2rem}
 .section-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
-
-/* LOADING */
 .loading-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--cream);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:16px}
 .loading-overlay.show{display:flex}
 .loading-brand{font-size:22px;font-weight:900;text-transform:uppercase}
@@ -48,8 +43,6 @@ body{font-family:'Arial Black',Arial,sans-serif;background:var(--cream);color:va
 .loading-bar-wrap{width:200px;height:4px;background:#E0DCC8;border-radius:99px;overflow:hidden}
 .loading-bar{height:100%;background:var(--grad);border-radius:99px;animation:load 1.5s ease-in-out infinite}
 @keyframes load{0%{width:0%}50%{width:70%}100%{width:100%}}
-
-/* EQUIPE */
 .equipe-card{background:var(--black);border-radius:16px;overflow:hidden}
 .eq-head{padding:14px 20px}
 .eq-head-title{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#fff}
@@ -74,8 +67,6 @@ tr:hover .del-eq{color:#555}
 .eq-inp::placeholder{color:#555}
 .eq-sel{padding:8px 9px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:12px;font-family:Arial,sans-serif}
 .eq-date{padding:8px 9px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:12px;font-family:Arial,sans-serif}
-
-/* CARDS */
 .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
 .client-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden}
 .card-head{padding:13px 18px;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between}
@@ -117,8 +108,6 @@ tr:hover .del-eq{color:#555}
 .add-sel{padding:7px 8px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--black);font-size:11px;font-family:Arial,sans-serif;font-weight:700;text-transform:uppercase}
 .add-btn{padding:7px 13px;border-radius:8px;border:none;background:var(--grad);color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;white-space:nowrap}
 .add-btn:hover{opacity:0.88}
-
-/* MODALS */
 .modal-bg{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:200;align-items:center;justify-content:center}
 .modal-bg.open{display:flex}
 .modal{background:#fff;border-radius:16px;padding:1.5rem;width:360px;max-width:94vw;border-top:4px solid transparent;border-image:linear-gradient(90deg,#E8185C,#F7931E) 1}
@@ -141,15 +130,11 @@ tr:hover .del-eq{color:#555}
 </style>
 </head>
 <body>
-
-<!-- LOADING -->
 <div class="loading-overlay show" id="loading">
   <div class="loading-brand">#<span>workspace</span></div>
   <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
 </div>
-
 <div class="grad-bar"></div>
-
 <div class="ws-header">
   <div class="brand">#<span>workspace</span></div>
   <div class="header-right">
@@ -162,8 +147,6 @@ tr:hover .del-eq{color:#555}
     <button class="btn-grad" onclick="openNewClient()">+ Cliente</button>
   </div>
 </div>
-
-<!-- EQUIPE -->
 <div class="section-block">
   <div class="section-title">Minha equipe</div>
   <div class="equipe-card">
@@ -186,16 +169,11 @@ tr:hover .del-eq{color:#555}
     </div>
   </div>
 </div>
-
-<!-- CLIENTES -->
 <div class="section-block">
   <div class="section-title">Clientes</div>
   <div class="cards-grid" id="cards-grid"></div>
 </div>
-
 <div class="grad-bar" style="margin-top:1rem"></div>
-
-<!-- MODAL SETUP -->
 <div class="modal-bg" id="setup-modal">
   <div class="modal">
     <h3>⚙ Configurar sincronização</h3>
@@ -219,8 +197,6 @@ tr:hover .del-eq{color:#555}
     </div>
   </div>
 </div>
-
-<!-- MODALS -->
 <div class="modal-bg" id="task-modal">
   <div class="modal">
     <h3 id="tm-title">Editar tarefa</h3>
@@ -251,7 +227,6 @@ tr:hover .del-eq{color:#555}
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="rem-modal">
   <div class="modal">
     <h3>Relembrete</h3>
@@ -262,7 +237,6 @@ tr:hover .del-eq{color:#555}
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="client-modal">
   <div class="modal">
     <h3 id="cm-title">Novo cliente</h3>
@@ -274,19 +248,17 @@ tr:hover .del-eq{color:#555}
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="person-modal">
   <div class="modal">
-    <h3 id="pm-title">Nova pessoa</h3>
-    <div class="field"><label>Nome</label><input id="pm-name" placeholder="Ex: Julia" /></div>
-    <div id="pm-del-area"></div>
+    <h3>Pessoas da equipe</h3>
+    <div id="persons-list" style="margin-bottom:12px"></div>
+    <div class="field"><label>Adicionar nova</label><input id="pm-name" placeholder="Ex: Julia" onkeydown="if(event.key==='Enter')savePersonModal()" /></div>
     <div class="modal-actions">
-      <button class="m-cancel" onclick="closeModal('person-modal')">Cancelar</button>
-      <button class="m-save" onclick="savePersonModal()">Salvar</button>
+      <button class="m-cancel" onclick="closeModal('person-modal')">Fechar</button>
+      <button class="m-save" onclick="savePersonModal()">Adicionar</button>
     </div>
   </div>
 </div>
-
 <div class="modal-bg" id="eq-modal">
   <div class="modal">
     <h3>Editar delegação</h3>
@@ -306,98 +278,37 @@ tr:hover .del-eq{color:#555}
     </div>
   </div>
 </div>
-
 <script>
 const TYPES={feed:{label:'Feed',cls:'tb-feed'},stories:{label:'Stories',cls:'tb-stories'},reels:{label:'Reels',cls:'tb-reels'},publi:{label:'Publi',cls:'tb-publi'},edicao:{label:'Edição',cls:'tb-edicao'},copy:{label:'Copy',cls:'tb-copy'},coord:{label:'Coord.',cls:'tb-coord'},outro:{label:'Outro',cls:'tb-outro'}};
 const DOT={todo:'dot-todo',doing:'dot-doing',done:'dot-done'};
 const PCLS=['pA','pB','pC','pD'];
-
 let data={persons:[],delegacoes:[],clients:[],tasks:[]};
-let nid=100;
-let editingTask=null,editingClient=null,editingPerson=null,editingEq=null,remClient=null;
-let saveTimer=null;
+let nid=100,editingTask=null,editingClient=null,editingEq=null,remClient=null,saveTimer=null;
 let API_URL=localStorage.getItem('ubws_api_url')||'';
-
-/* ===== SYNC ===== */
-function setSyncStatus(state,text){
-  const dot=document.getElementById('sync-dot');
-  const txt=document.getElementById('sync-text');
-  dot.className='sync-dot '+state;
-  txt.textContent=text;
-}
-
+function setSyncStatus(state,text){document.getElementById('sync-dot').className='sync-dot '+state;document.getElementById('sync-text').textContent=text;}
 async function hydrate(){
-  if(!API_URL){
-    setSyncStatus('error','sem sync');
-    document.getElementById('loading').classList.remove('show');
-    render();
-    return;
-  }
+  if(!API_URL){setSyncStatus('error','sem sync');document.getElementById('loading').classList.remove('show');render();return;}
   setSyncStatus('saving','carregando...');
-  try{
-    const r=await fetch(API_URL,{redirect:'follow'});
-    if(!r.ok) throw new Error('erro');
-    const parsed=await r.json();
-    if(parsed&&parsed.persons!==undefined){
-      data=parsed;
-      nid=parsed.nid||100;
-    }
-    setSyncStatus('ok','sincronizado');
-  }catch(e){
-    setSyncStatus('error','erro ao carregar');
-  }
-  document.getElementById('loading').classList.remove('show');
-  render();
+  try{const r=await fetch(API_URL,{redirect:'follow'});if(!r.ok)throw new Error();const p=await r.json();if(p&&p.persons!==undefined){data=p;nid=p.nid||100;}setSyncStatus('ok','sincronizado');}
+  catch(e){setSyncStatus('error','erro ao carregar');}
+  document.getElementById('loading').classList.remove('show');render();
 }
-
 function persist(){
-  if(saveTimer) clearTimeout(saveTimer);
-  setSyncStatus('saving','salvando...');
+  if(saveTimer)clearTimeout(saveTimer);setSyncStatus('saving','salvando...');
   saveTimer=setTimeout(async()=>{
     const payload=JSON.stringify({...data,nid});
-    if(API_URL){
-      try{
-        await fetch(API_URL,{
-          method:'POST',
-          headers:{'Content-Type':'text/plain;charset=utf-8'},
-          body:payload,
-          redirect:'follow'
-        });
-        setSyncStatus('ok','sincronizado');
-      }catch(e){
-        setSyncStatus('error','erro ao salvar');
-      }
-    } else {
-      localStorage.setItem('ubws_fallback',payload);
-      setSyncStatus('error','sem sync — salvo local');
-    }
+    if(API_URL){try{await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:payload,redirect:'follow'});setSyncStatus('ok','sincronizado');}catch(e){setSyncStatus('error','erro ao salvar');}}
+    else{localStorage.setItem('ubws_fallback',payload);setSyncStatus('error','sem sync — salvo local');}
   },600);
 }
-
-/* ===== SETUP ===== */
-function openSetup(){
-  document.getElementById('api-url-input').value=API_URL;
-  openModal('setup-modal');
-}
-
-function saveSetup(){
-  const url=document.getElementById('api-url-input').value.trim();
-  if(!url){alert('Cole o link do Apps Script.');return;}
-  API_URL=url;
-  localStorage.setItem('ubws_api_url',url);
-  closeModal('setup-modal');
-  hydrate();
-}
-
-/* ===== UTILS ===== */
+function openSetup(){document.getElementById('api-url-input').value=API_URL;openModal('setup-modal');}
+function saveSetup(){const url=document.getElementById('api-url-input').value.trim();if(!url)return;API_URL=url;localStorage.setItem('ubws_api_url',url);closeModal('setup-modal');hydrate();}
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function openModal(id){document.getElementById(id).classList.add('open')}
 function pCls(pid){const idx=data.persons.findIndex(p=>p.id===pid);return PCLS[Math.max(0,idx)%PCLS.length]}
 function pName(pid){const p=data.persons.find(x=>x.id===pid);return p?p.name:'?'}
 function dueCls(d){if(!d)return '';const diff=Math.ceil((new Date(d)-new Date())/(864e5));return diff<0?'due-late':diff<=3?'due-soon':'due-ok'}
 function fmtDate(d){if(!d)return '';const[y,m,dd]=d.split('-');return `${dd}/${m}`}
-
-/* ===== EQUIPE ===== */
 function renderEq(){
   const sel=document.getElementById('eq-person-sel');
   sel.innerHTML=data.persons.length?data.persons.map(p=>`<option value="${p.id}">${p.name}</option>`).join(''):'<option value="">— adicione uma pessoa —</option>';
@@ -412,54 +323,32 @@ function renderEq(){
       <option value="andamento"${d.status==='andamento'?' selected':''}>Em andamento</option>
       <option value="entregue"${d.status==='entregue'?' selected':''}>Entregue</option>
     </select></td>
-    <td><button class="del-eq" onclick="event.stopPropagation();delEq('${d.id}')" title="Remover">✕</button></td>
+    <td><button class="del-eq" onclick="event.stopPropagation();delEq('${d.id}')">✕</button></td>
   </tr>`).join('');
 }
-
 function changeEqStatus(eid,status){const d=data.delegacoes.find(x=>x.id===eid);if(d){d.status=status;persist();}}
-function quickAddEq(){
-  const pid=document.getElementById('eq-person-sel').value;
-  const pedido=document.getElementById('eq-pedido-inp').value.trim();
-  const date=document.getElementById('eq-date-inp').value;
-  if(!pid||!pedido)return;
-  data.delegacoes.push({id:'d'+(nid++),person:pid,pedido,date,status:'aguardando'});
-  document.getElementById('eq-pedido-inp').value='';document.getElementById('eq-date-inp').value='';
-  persist();renderEq();
-}
-function openEditEq(eid){
-  const d=data.delegacoes.find(x=>x.id===eid);if(!d)return;editingEq=eid;
-  const sel=document.getElementById('em-person');
-  sel.innerHTML=data.persons.map(p=>`<option value="${p.id}"${p.id===d.person?' selected':''}>${p.name}</option>`).join('');
-  document.getElementById('em-pedido').value=d.pedido;document.getElementById('em-date').value=d.date||'';document.getElementById('em-status').value=d.status;
-  openModal('eq-modal');
-}
-function saveEqModal(){
-  const d=data.delegacoes.find(x=>x.id===editingEq);
-  if(d){d.person=document.getElementById('em-person').value;d.pedido=document.getElementById('em-pedido').value.trim();d.date=document.getElementById('em-date').value;d.status=document.getElementById('em-status').value;}
-  persist();closeModal('eq-modal');renderEq();
-}
+function quickAddEq(){const pid=document.getElementById('eq-person-sel').value;const pedido=document.getElementById('eq-pedido-inp').value.trim();const date=document.getElementById('eq-date-inp').value;if(!pid||!pedido)return;data.delegacoes.push({id:'d'+(nid++),person:pid,pedido,date,status:'aguardando'});document.getElementById('eq-pedido-inp').value='';document.getElementById('eq-date-inp').value='';persist();renderEq();}
+function openEditEq(eid){const d=data.delegacoes.find(x=>x.id===eid);if(!d)return;editingEq=eid;const sel=document.getElementById('em-person');sel.innerHTML=data.persons.map(p=>`<option value="${p.id}"${p.id===d.person?' selected':''}>${p.name}</option>`).join('');document.getElementById('em-pedido').value=d.pedido;document.getElementById('em-date').value=d.date||'';document.getElementById('em-status').value=d.status;openModal('eq-modal');}
+function saveEqModal(){const d=data.delegacoes.find(x=>x.id===editingEq);if(d){d.person=document.getElementById('em-person').value;d.pedido=document.getElementById('em-pedido').value.trim();d.date=document.getElementById('em-date').value;d.status=document.getElementById('em-status').value;}persist();closeModal('eq-modal');renderEq();}
 function delEq(eid){if(!confirm('Remover esta delegação?'))return;data.delegacoes=data.delegacoes.filter(x=>x.id!==eid);persist();renderEq();}
-
-/* ===== PESSOAS ===== */
-function openAddPerson(){
-  editingPerson=null;document.getElementById('pm-title').textContent='Nova pessoa';document.getElementById('pm-name').value='';document.getElementById('pm-del-area').innerHTML='';
-  openModal('person-modal');setTimeout(()=>document.getElementById('pm-name').focus(),50);
+function openAddPerson(){renderPersonsList();document.getElementById('pm-name').value='';openModal('person-modal');setTimeout(()=>document.getElementById('pm-name').focus(),50);}
+function renderPersonsList(){
+  const list=document.getElementById('persons-list');
+  if(!data.persons.length){list.innerHTML='<div style="font-size:12px;color:#bbb;font-family:Arial,sans-serif;margin-bottom:4px">Nenhuma pessoa ainda</div>';return;}
+  list.innerHTML=data.persons.map(p=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:8px;background:#FAFAF5;margin-bottom:6px">
+    <span style="font-size:13px;font-weight:700;font-family:Arial,sans-serif">${p.name}</span>
+    <button onclick="delPerson('${p.id}')" style="background:none;border:none;color:#E8185C;cursor:pointer;font-size:13px;font-weight:900;padding:0 4px">✕</button>
+  </div>`).join('');
 }
-function savePersonModal(){
-  const name=document.getElementById('pm-name').value.trim();if(!name)return;
-  if(editingPerson){const p=data.persons.find(x=>x.id===editingPerson);if(p)p.name=name;}
-  else data.persons.push({id:'p'+(nid++),name});
-  persist();closeModal('person-modal');render();
-}
-
-/* ===== CLIENTES ===== */
+function delPerson(pid){if(!confirm('Remover esta pessoa?'))return;data.persons=data.persons.filter(x=>x.id!==pid);data.delegacoes=data.delegacoes.filter(x=>x.person!==pid);persist();renderPersonsList();renderEq();}
+function savePersonModal(){const name=document.getElementById('pm-name').value.trim();if(!name)return;data.persons.push({id:'p'+(nid++),name});document.getElementById('pm-name').value='';persist();renderPersonsList();renderEq();setTimeout(()=>document.getElementById('pm-name').focus(),50);}
 function renderClients(){
   const grid=document.getElementById('cards-grid');
   if(!data.clients.length){grid.innerHTML=`<div style="font-size:13px;color:#bbb;font-family:Arial,sans-serif;padding:20px 0">Clique em "+ Cliente" para começar.</div>`;return;}
   grid.innerHTML=data.clients.map(c=>{
     const tasks=data.tasks.filter(t=>t.client===c.id);
     return `<div class="client-card">
-      <div class="card-head"><span class="card-name">${c.name}</span><button class="icon-btn" onclick="openEditClient('${c.id}')" title="Editar">✎</button></div>
+      <div class="card-head"><span class="card-name">${c.name}</span><button class="icon-btn" onclick="openEditClient('${c.id}')">✎</button></div>
       <div class="relembrete" onclick="openRem('${c.id}')">
         <div class="rem-label">● Relembrete</div>
         ${c.relembrete?`<div class="rem-text">${c.relembrete}</div>`:`<div class="rem-empty">Clique para registrar o que fez por último</div>`}
@@ -479,7 +368,7 @@ function renderClients(){
               ${t.note?`<span class="note-inline" title="${t.note}">${t.note}</span>`:''}
             </div>
           </div>
-          <button class="task-del" onclick="delTask('${t.id}')" title="Remover">✕</button>
+          <button class="task-del" onclick="delTask('${t.id}')">✕</button>
         </div>`).join(''):`<div class="empty-msg">Nenhuma tarefa ainda</div>`}
       </div>
       <div class="add-row">
@@ -490,37 +379,20 @@ function renderClients(){
     </div>`;
   }).join('');
 }
-
 function quickAdd(cid){const inp=document.getElementById('qi-'+cid);const name=inp.value.trim();if(!name)return;data.tasks.push({id:'t'+(nid++),client:cid,name,type:document.getElementById('qt-'+cid).value,status:'todo',note:''});inp.value='';persist();renderClients();}
 function changeStatus(tid,status){const t=data.tasks.find(x=>x.id===tid);if(t){t.status=status;persist();}renderClients();}
 function delTask(tid){if(!confirm('Remover esta tarefa?'))return;data.tasks=data.tasks.filter(x=>x.id!==tid);persist();renderClients();}
-function openEditTask(tid){
-  const t=data.tasks.find(x=>x.id===tid);if(!t)return;editingTask=tid;
-  document.getElementById('tm-title').textContent='Editar tarefa';document.getElementById('tm-name').value=t.name;document.getElementById('tm-type').value=t.type;document.getElementById('tm-status').value=t.status;document.getElementById('tm-note').value=t.note||'';
-  openModal('task-modal');
-}
-function saveTaskModal(){
-  const name=document.getElementById('tm-name').value.trim();if(!name)return;
-  const t=data.tasks.find(x=>x.id===editingTask);
-  if(t){t.name=name;t.type=document.getElementById('tm-type').value;t.status=document.getElementById('tm-status').value;t.note=document.getElementById('tm-note').value.trim();}
-  persist();closeModal('task-modal');renderClients();
-}
+function openEditTask(tid){const t=data.tasks.find(x=>x.id===tid);if(!t)return;editingTask=tid;document.getElementById('tm-title').textContent='Editar tarefa';document.getElementById('tm-name').value=t.name;document.getElementById('tm-type').value=t.type;document.getElementById('tm-status').value=t.status;document.getElementById('tm-note').value=t.note||'';openModal('task-modal');}
+function saveTaskModal(){const name=document.getElementById('tm-name').value.trim();if(!name)return;const t=data.tasks.find(x=>x.id===editingTask);if(t){t.name=name;t.type=document.getElementById('tm-type').value;t.status=document.getElementById('tm-status').value;t.note=document.getElementById('tm-note').value.trim();}persist();closeModal('task-modal');renderClients();}
 function openRem(cid){remClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('rem-text').value=c?c.relembrete||'':'';openModal('rem-modal');setTimeout(()=>document.getElementById('rem-text').focus(),50);}
 function saveRemModal(){const c=data.clients.find(x=>x.id===remClient);if(c)c.relembrete=document.getElementById('rem-text').value.trim();persist();closeModal('rem-modal');renderClients();}
 function openNewClient(){editingClient=null;document.getElementById('cm-title').textContent='Novo cliente';document.getElementById('cm-name').value='';document.getElementById('cm-del-area').innerHTML='';openModal('client-modal');setTimeout(()=>document.getElementById('cm-name').focus(),50);}
 function openEditClient(cid){editingClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('cm-title').textContent='Editar cliente';document.getElementById('cm-name').value=c?c.name:'';document.getElementById('cm-del-area').innerHTML=`<button class="del-client-btn" onclick="delClient('${cid}')">🗑 Remover cliente</button>`;openModal('client-modal');}
 function saveClientModal(){const name=document.getElementById('cm-name').value.trim();if(!name)return;if(editingClient){const c=data.clients.find(x=>x.id===editingClient);if(c)c.name=name;}else data.clients.push({id:'c'+(nid++),name,relembrete:''});persist();closeModal('client-modal');renderClients();}
 function delClient(cid){if(!confirm('Remover este cliente e todas as tarefas?'))return;data.clients=data.clients.filter(x=>x.id!==cid);data.tasks=data.tasks.filter(x=>x.client!==cid);persist();closeModal('client-modal');renderClients();}
-
 function render(){renderEq();renderClients();}
-
-['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>{
-  document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
-});
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>document.getElementById(id).classList.remove('open'));
-});
-
+['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>{document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>document.getElementById(id).classList.remove('open'));});
 hydrate();
 </script>
 </body>
