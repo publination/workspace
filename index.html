@@ -19,23 +19,39 @@ body{font-family:'Arial Black',Arial,sans-serif;background:var(--cream);color:va
 
 .grad-bar{height:5px;background:var(--grad);border-radius:99px;margin-bottom:1.5rem}
 
-/* HEADER */
 .ws-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.75rem;flex-wrap:wrap;gap:10px}
 .brand{font-size:20px;font-weight:900;letter-spacing:-0.5px;text-transform:uppercase}
 .brand span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sync-status{font-size:11px;font-family:Arial,sans-serif;font-weight:400;color:var(--muted);display:flex;align-items:center;gap:5px}
+.sync-dot{width:7px;height:7px;border-radius:50%;background:#ccc}
+.sync-dot.ok{background:#4CAF50}
+.sync-dot.saving{background:var(--orange);animation:pulse 1s infinite}
+.sync-dot.error{background:var(--pink)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .btn-grad{padding:9px 18px;border-radius:99px;border:none;background:var(--grad);color:#fff;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;display:inline-flex;align-items:center;gap:5px}
 .btn-grad:hover{opacity:0.88}
 .btn-outline{padding:8px 16px;border-radius:99px;border:2px solid var(--black);background:transparent;color:var(--black);font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer}
 .btn-outline:hover{background:var(--black);color:var(--cream)}
+.btn-cfg{padding:7px 13px;border-radius:99px;border:1.5px solid var(--border);background:transparent;color:var(--muted);font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;font-family:Arial,sans-serif}
+.btn-cfg:hover{border-color:var(--black);color:var(--black)}
 
-/* SECTION */
 .section-block{margin-bottom:2rem}
 .section-title{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:12px;display:flex;align-items:center;gap:10px}
 .section-title::after{content:'';flex:1;height:1px;background:var(--border)}
 
+/* LOADING */
+.loading-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--cream);z-index:500;align-items:center;justify-content:center;flex-direction:column;gap:16px}
+.loading-overlay.show{display:flex}
+.loading-brand{font-size:22px;font-weight:900;text-transform:uppercase}
+.loading-brand span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.loading-bar-wrap{width:200px;height:4px;background:#E0DCC8;border-radius:99px;overflow:hidden}
+.loading-bar{height:100%;background:var(--grad);border-radius:99px;animation:load 1.5s ease-in-out infinite}
+@keyframes load{0%{width:0%}50%{width:70%}100%{width:100%}}
+
 /* EQUIPE */
 .equipe-card{background:var(--black);border-radius:16px;overflow:hidden}
-.eq-head{padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+.eq-head{padding:14px 20px}
 .eq-head-title{font-size:13px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#fff}
 .eq-table{width:100%;border-collapse:collapse}
 .eq-table th{font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;color:#666;padding:8px 20px;border-bottom:1px solid #222;text-align:left}
@@ -46,6 +62,7 @@ body{font-family:'Arial Black',Arial,sans-serif;background:var(--cream);color:va
 .pA{background:linear-gradient(90deg,#E8185C,#F7931E);color:#fff}
 .pB{background:#fff;color:#0D0D0D}
 .pC{background:transparent;color:#E8185C;border:1px solid #E8185C}
+.pD{background:#333;color:#fff}
 .due-ok{font-size:11px;padding:3px 8px;border-radius:99px;background:#1a2a1a;color:#4CAF50;font-family:Arial,sans-serif;font-weight:700}
 .due-soon{font-size:11px;padding:3px 8px;border-radius:99px;background:#2a1a00;color:#F7931E;font-family:Arial,sans-serif;font-weight:700}
 .due-late{font-size:11px;padding:3px 8px;border-radius:99px;background:#2a0a0a;color:#E8185C;font-family:Arial,sans-serif;font-weight:700}
@@ -106,6 +123,8 @@ tr:hover .del-eq{color:#555}
 .modal-bg.open{display:flex}
 .modal{background:#fff;border-radius:16px;padding:1.5rem;width:360px;max-width:94vw;border-top:4px solid transparent;border-image:linear-gradient(90deg,#E8185C,#F7931E) 1}
 .modal h3{font-size:15px;font-weight:900;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1.1rem}
+.modal p{font-size:13px;font-family:Arial,sans-serif;color:var(--muted);line-height:1.5;margin-bottom:1rem}
+.modal a{color:var(--pink);font-weight:700}
 .field{margin-bottom:11px}
 .field label{display:block;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-bottom:4px}
 .field input,.field select,.field textarea{width:100%;padding:9px 12px;border-radius:8px;border:1.5px solid var(--border);color:var(--black);font-size:13px;font-family:Arial,sans-serif;background:#fff}
@@ -113,20 +132,32 @@ tr:hover .del-eq{color:#555}
 .field textarea{resize:vertical;min-height:64px}
 .modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:1.1rem}
 .m-cancel{padding:8px 16px;border-radius:8px;border:1.5px solid var(--border);background:transparent;color:#888;font-size:12px;font-weight:900;text-transform:uppercase;cursor:pointer}
-.m-cancel:hover{border-color:#aaa}
 .m-save{padding:8px 18px;border-radius:8px;border:none;background:var(--grad);color:#fff;font-size:12px;font-weight:900;text-transform:uppercase;cursor:pointer}
 .m-save:hover{opacity:0.88}
 .del-client-btn{padding:6px 12px;border-radius:8px;border:1.5px solid #ffcccc;background:transparent;color:var(--pink);font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:5px}
 .del-client-btn:hover{background:#fff0f3}
+.setup-steps{background:#FAFAF5;border-radius:10px;padding:12px;margin-bottom:12px;font-family:Arial,sans-serif;font-size:12px;color:#333;line-height:1.7}
+.setup-steps b{font-weight:900;color:var(--black)}
 </style>
 </head>
 <body>
+
+<!-- LOADING -->
+<div class="loading-overlay show" id="loading">
+  <div class="loading-brand">#<span>workspace</span></div>
+  <div class="loading-bar-wrap"><div class="loading-bar"></div></div>
+</div>
 
 <div class="grad-bar"></div>
 
 <div class="ws-header">
   <div class="brand">#<span>workspace</span></div>
-  <div style="display:flex;gap:8px;flex-wrap:wrap">
+  <div class="header-right">
+    <div class="sync-status" id="sync-status">
+      <div class="sync-dot" id="sync-dot"></div>
+      <span id="sync-text">conectando...</span>
+    </div>
+    <button class="btn-cfg" onclick="openSetup()" title="Configurar sincronização">⚙ sync</button>
     <button class="btn-outline" onclick="openAddPerson()">+ Pessoa</button>
     <button class="btn-grad" onclick="openNewClient()">+ Cliente</button>
   </div>
@@ -136,9 +167,7 @@ tr:hover .del-eq{color:#555}
 <div class="section-block">
   <div class="section-title">Minha equipe</div>
   <div class="equipe-card">
-    <div class="eq-head">
-      <span class="eq-head-title">Delegações</span>
-    </div>
+    <div class="eq-head"><span class="eq-head-title">Delegações</span></div>
     <table class="eq-table">
       <thead><tr>
         <th style="width:100px">Pessoa</th>
@@ -165,6 +194,31 @@ tr:hover .del-eq{color:#555}
 </div>
 
 <div class="grad-bar" style="margin-top:1rem"></div>
+
+<!-- MODAL SETUP -->
+<div class="modal-bg" id="setup-modal">
+  <div class="modal">
+    <h3>⚙ Configurar sincronização</h3>
+    <div class="setup-steps">
+      <b>Passo a passo:</b><br>
+      1. Acesse <a href="https://sheets.new" target="_blank">sheets.new</a> e crie uma planilha<br>
+      2. No menu, clique em <b>Extensões → Apps Script</b><br>
+      3. Apague o código existente e cole o código do arquivo <b>apps_script.txt</b><br>
+      4. Clique em <b>Implantar → Nova implantação</b><br>
+      5. Tipo: <b>App da Web</b> — Acesso: <b>Qualquer pessoa</b><br>
+      6. Clique em <b>Implantar</b> e copie o link gerado<br>
+      7. Cole o link abaixo e salve
+    </div>
+    <div class="field">
+      <label>URL do Apps Script</label>
+      <input id="api-url-input" placeholder="https://script.google.com/macros/s/..." />
+    </div>
+    <div class="modal-actions">
+      <button class="m-cancel" onclick="closeModal('setup-modal')">Fechar</button>
+      <button class="m-save" onclick="saveSetup()">Salvar e conectar</button>
+    </div>
+  </div>
+</div>
 
 <!-- MODALS -->
 <div class="modal-bg" id="task-modal">
@@ -254,290 +308,220 @@ tr:hover .del-eq{color:#555}
 </div>
 
 <script>
-const TYPES={
-  feed:{label:'Feed',cls:'tb-feed'},
-  stories:{label:'Stories',cls:'tb-stories'},
-  reels:{label:'Reels',cls:'tb-reels'},
-  publi:{label:'Publi',cls:'tb-publi'},
-  edicao:{label:'Edição',cls:'tb-edicao'},
-  copy:{label:'Copy',cls:'tb-copy'},
-  coord:{label:'Coord.',cls:'tb-coord'},
-  outro:{label:'Outro',cls:'tb-outro'}
-};
+const TYPES={feed:{label:'Feed',cls:'tb-feed'},stories:{label:'Stories',cls:'tb-stories'},reels:{label:'Reels',cls:'tb-reels'},publi:{label:'Publi',cls:'tb-publi'},edicao:{label:'Edição',cls:'tb-edicao'},copy:{label:'Copy',cls:'tb-copy'},coord:{label:'Coord.',cls:'tb-coord'},outro:{label:'Outro',cls:'tb-outro'}};
 const DOT={todo:'dot-todo',doing:'dot-doing',done:'dot-done'};
-const PCLS=['pA','pB','pC','pA'];
+const PCLS=['pA','pB','pC','pD'];
 
-let data={
-  persons:[],
-  delegacoes:[],
-  clients:[],
-  tasks:[]
-};
+let data={persons:[],delegacoes:[],clients:[],tasks:[]};
 let nid=100;
 let editingTask=null,editingClient=null,editingPerson=null,editingEq=null,remClient=null;
+let saveTimer=null;
+let API_URL=localStorage.getItem('ubws_api_url')||'';
+
+/* ===== SYNC ===== */
+function setSyncStatus(state,text){
+  const dot=document.getElementById('sync-dot');
+  const txt=document.getElementById('sync-text');
+  dot.className='sync-dot '+state;
+  txt.textContent=text;
+}
+
+async function hydrate(){
+  if(!API_URL){
+    setSyncStatus('error','sem sync');
+    document.getElementById('loading').classList.remove('show');
+    render();
+    return;
+  }
+  setSyncStatus('saving','carregando...');
+  try{
+    const r=await fetch(API_URL,{redirect:'follow'});
+    if(!r.ok) throw new Error('erro');
+    const parsed=await r.json();
+    if(parsed&&parsed.persons!==undefined){
+      data=parsed;
+      nid=parsed.nid||100;
+    }
+    setSyncStatus('ok','sincronizado');
+  }catch(e){
+    setSyncStatus('error','erro ao carregar');
+  }
+  document.getElementById('loading').classList.remove('show');
+  render();
+}
 
 function persist(){
-  try{localStorage.setItem('ubws_v1',JSON.stringify({data,nid}));}catch(e){}
+  if(saveTimer) clearTimeout(saveTimer);
+  setSyncStatus('saving','salvando...');
+  saveTimer=setTimeout(async()=>{
+    const payload=JSON.stringify({...data,nid});
+    if(API_URL){
+      try{
+        await fetch(API_URL,{
+          method:'POST',
+          headers:{'Content-Type':'text/plain;charset=utf-8'},
+          body:payload,
+          redirect:'follow'
+        });
+        setSyncStatus('ok','sincronizado');
+      }catch(e){
+        setSyncStatus('error','erro ao salvar');
+      }
+    } else {
+      localStorage.setItem('ubws_fallback',payload);
+      setSyncStatus('error','sem sync — salvo local');
+    }
+  },600);
 }
-function hydrate(){
-  try{
-    const s=localStorage.getItem('ubws_v1');
-    if(s){const p=JSON.parse(s);data=p.data;nid=p.nid||100;}
-  }catch(e){}
-}
-hydrate();
 
+/* ===== SETUP ===== */
+function openSetup(){
+  document.getElementById('api-url-input').value=API_URL;
+  openModal('setup-modal');
+}
+
+function saveSetup(){
+  const url=document.getElementById('api-url-input').value.trim();
+  if(!url){alert('Cole o link do Apps Script.');return;}
+  API_URL=url;
+  localStorage.setItem('ubws_api_url',url);
+  closeModal('setup-modal');
+  hydrate();
+}
+
+/* ===== UTILS ===== */
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function openModal(id){document.getElementById(id).classList.add('open')}
-
 function pCls(pid){const idx=data.persons.findIndex(p=>p.id===pid);return PCLS[Math.max(0,idx)%PCLS.length]}
 function pName(pid){const p=data.persons.find(x=>x.id===pid);return p?p.name:'?'}
-function dueCls(d){
-  if(!d)return '';
-  const diff=Math.ceil((new Date(d)-new Date())/(864e5));
-  return diff<0?'due-late':diff<=3?'due-soon':'due-ok';
-}
-function fmtDate(d){
-  if(!d)return '';
-  const[y,m,dd]=d.split('-');return `${dd}/${m}`;
-}
+function dueCls(d){if(!d)return '';const diff=Math.ceil((new Date(d)-new Date())/(864e5));return diff<0?'due-late':diff<=3?'due-soon':'due-ok'}
+function fmtDate(d){if(!d)return '';const[y,m,dd]=d.split('-');return `${dd}/${m}`}
 
 /* ===== EQUIPE ===== */
 function renderEq(){
   const sel=document.getElementById('eq-person-sel');
-  sel.innerHTML=data.persons.length
-    ? data.persons.map(p=>`<option value="${p.id}">${p.name}</option>`).join('')
-    : '<option value="">— adicione uma pessoa —</option>';
-
+  sel.innerHTML=data.persons.length?data.persons.map(p=>`<option value="${p.id}">${p.name}</option>`).join(''):'<option value="">— adicione uma pessoa —</option>';
   const body=document.getElementById('eq-body');
-  if(!data.delegacoes.length){
-    body.innerHTML=`<tr><td colspan="5" style="text-align:center;color:#555;font-size:12px;padding:18px;font-family:Arial,sans-serif">Nenhuma delegação ainda</td></tr>`;
-    return;
-  }
-  body.innerHTML=data.delegacoes.map(d=>`
-    <tr style="cursor:pointer" onclick="openEditEq('${d.id}')">
-      <td><span class="person-pill ${pCls(d.person)}">${pName(d.person)}</span></td>
-      <td style="font-family:Arial,sans-serif">${d.pedido}</td>
-      <td>${d.date?`<span class="${dueCls(d.date)}">${fmtDate(d.date)}</span>`:''}</td>
-      <td>
-        <select class="eq-status-sel" onclick="event.stopPropagation()" onchange="changeEqStatus('${d.id}',this.value)">
-          <option value="aguardando"${d.status==='aguardando'?' selected':''}>Aguardando</option>
-          <option value="andamento"${d.status==='andamento'?' selected':''}>Em andamento</option>
-          <option value="entregue"${d.status==='entregue'?' selected':''}>Entregue</option>
-        </select>
-      </td>
-      <td><button class="del-eq" onclick="event.stopPropagation();delEq('${d.id}')" title="Remover">✕</button></td>
-    </tr>`).join('');
+  if(!data.delegacoes.length){body.innerHTML=`<tr><td colspan="5" style="text-align:center;color:#555;font-size:12px;padding:18px;font-family:Arial,sans-serif">Nenhuma delegação ainda</td></tr>`;return;}
+  body.innerHTML=data.delegacoes.map(d=>`<tr style="cursor:pointer" onclick="openEditEq('${d.id}')">
+    <td><span class="person-pill ${pCls(d.person)}">${pName(d.person)}</span></td>
+    <td style="font-family:Arial,sans-serif">${d.pedido}</td>
+    <td>${d.date?`<span class="${dueCls(d.date)}">${fmtDate(d.date)}</span>`:''}</td>
+    <td><select class="eq-status-sel" onclick="event.stopPropagation()" onchange="changeEqStatus('${d.id}',this.value)">
+      <option value="aguardando"${d.status==='aguardando'?' selected':''}>Aguardando</option>
+      <option value="andamento"${d.status==='andamento'?' selected':''}>Em andamento</option>
+      <option value="entregue"${d.status==='entregue'?' selected':''}>Entregue</option>
+    </select></td>
+    <td><button class="del-eq" onclick="event.stopPropagation();delEq('${d.id}')" title="Remover">✕</button></td>
+  </tr>`).join('');
 }
 
-function changeEqStatus(eid,status){
-  const d=data.delegacoes.find(x=>x.id===eid);
-  if(d){d.status=status;persist();}
-}
-
+function changeEqStatus(eid,status){const d=data.delegacoes.find(x=>x.id===eid);if(d){d.status=status;persist();}}
 function quickAddEq(){
   const pid=document.getElementById('eq-person-sel').value;
   const pedido=document.getElementById('eq-pedido-inp').value.trim();
   const date=document.getElementById('eq-date-inp').value;
   if(!pid||!pedido)return;
   data.delegacoes.push({id:'d'+(nid++),person:pid,pedido,date,status:'aguardando'});
-  document.getElementById('eq-pedido-inp').value='';
-  document.getElementById('eq-date-inp').value='';
+  document.getElementById('eq-pedido-inp').value='';document.getElementById('eq-date-inp').value='';
   persist();renderEq();
 }
-
 function openEditEq(eid){
-  const d=data.delegacoes.find(x=>x.id===eid);if(!d)return;
-  editingEq=eid;
+  const d=data.delegacoes.find(x=>x.id===eid);if(!d)return;editingEq=eid;
   const sel=document.getElementById('em-person');
   sel.innerHTML=data.persons.map(p=>`<option value="${p.id}"${p.id===d.person?' selected':''}>${p.name}</option>`).join('');
-  document.getElementById('em-pedido').value=d.pedido;
-  document.getElementById('em-date').value=d.date||'';
-  document.getElementById('em-status').value=d.status;
+  document.getElementById('em-pedido').value=d.pedido;document.getElementById('em-date').value=d.date||'';document.getElementById('em-status').value=d.status;
   openModal('eq-modal');
 }
-
 function saveEqModal(){
   const d=data.delegacoes.find(x=>x.id===editingEq);
-  if(d){
-    d.person=document.getElementById('em-person').value;
-    d.pedido=document.getElementById('em-pedido').value.trim();
-    d.date=document.getElementById('em-date').value;
-    d.status=document.getElementById('em-status').value;
-  }
+  if(d){d.person=document.getElementById('em-person').value;d.pedido=document.getElementById('em-pedido').value.trim();d.date=document.getElementById('em-date').value;d.status=document.getElementById('em-status').value;}
   persist();closeModal('eq-modal');renderEq();
 }
-
-function delEq(eid){
-  if(!confirm('Remover esta delegação?'))return;
-  data.delegacoes=data.delegacoes.filter(x=>x.id!==eid);
-  persist();renderEq();
-}
+function delEq(eid){if(!confirm('Remover esta delegação?'))return;data.delegacoes=data.delegacoes.filter(x=>x.id!==eid);persist();renderEq();}
 
 /* ===== PESSOAS ===== */
 function openAddPerson(){
-  editingPerson=null;
-  document.getElementById('pm-title').textContent='Nova pessoa';
-  document.getElementById('pm-name').value='';
-  document.getElementById('pm-del-area').innerHTML='';
-  openModal('person-modal');
-  setTimeout(()=>document.getElementById('pm-name').focus(),50);
+  editingPerson=null;document.getElementById('pm-title').textContent='Nova pessoa';document.getElementById('pm-name').value='';document.getElementById('pm-del-area').innerHTML='';
+  openModal('person-modal');setTimeout(()=>document.getElementById('pm-name').focus(),50);
 }
-
 function savePersonModal(){
   const name=document.getElementById('pm-name').value.trim();if(!name)return;
-  if(editingPerson){
-    const p=data.persons.find(x=>x.id===editingPerson);if(p)p.name=name;
-  } else {
-    data.persons.push({id:'p'+(nid++),name});
-  }
-  persist();closeModal('person-modal');renderEq();renderClients();
+  if(editingPerson){const p=data.persons.find(x=>x.id===editingPerson);if(p)p.name=name;}
+  else data.persons.push({id:'p'+(nid++),name});
+  persist();closeModal('person-modal');render();
 }
 
 /* ===== CLIENTES ===== */
 function renderClients(){
   const grid=document.getElementById('cards-grid');
-  if(!data.clients.length){
-    grid.innerHTML=`<div style="font-size:13px;color:#bbb;font-family:Arial,sans-serif;padding:20px 0">Clique em "+ Cliente" para começar.</div>`;
-    return;
-  }
+  if(!data.clients.length){grid.innerHTML=`<div style="font-size:13px;color:#bbb;font-family:Arial,sans-serif;padding:20px 0">Clique em "+ Cliente" para começar.</div>`;return;}
   grid.innerHTML=data.clients.map(c=>{
     const tasks=data.tasks.filter(t=>t.client===c.id);
     return `<div class="client-card">
-      <div class="card-head">
-        <span class="card-name">${c.name}</span>
-        <button class="icon-btn" onclick="openEditClient('${c.id}')" title="Editar cliente">✎</button>
-      </div>
+      <div class="card-head"><span class="card-name">${c.name}</span><button class="icon-btn" onclick="openEditClient('${c.id}')" title="Editar">✎</button></div>
       <div class="relembrete" onclick="openRem('${c.id}')">
         <div class="rem-label">● Relembrete</div>
-        ${c.relembrete
-          ? `<div class="rem-text">${c.relembrete}</div>`
-          : `<div class="rem-empty">Clique para registrar o que fez por último</div>`}
+        ${c.relembrete?`<div class="rem-text">${c.relembrete}</div>`:`<div class="rem-empty">Clique para registrar o que fez por último</div>`}
       </div>
       <div class="tasks-area">
-        ${tasks.length
-          ? tasks.map(t=>`<div class="task-row">
-              <div class="status-dot ${DOT[t.status]}"></div>
-              <div class="task-info">
-                <div class="task-name-el" onclick="openEditTask('${t.id}')">${t.name}</div>
-                <div class="task-meta">
-                  <span class="tbadge ${TYPES[t.type].cls}">${TYPES[t.type].label}</span>
-                  <select class="status-sel" onchange="changeStatus('${t.id}',this.value)">
-                    <option value="todo"${t.status==='todo'?' selected':''}>A fazer</option>
-                    <option value="doing"${t.status==='doing'?' selected':''}>Em andamento</option>
-                    <option value="done"${t.status==='done'?' selected':''}>Concluído</option>
-                  </select>
-                  ${t.note?`<span class="note-inline" title="${t.note}">${t.note}</span>`:''}
-                </div>
-              </div>
-              <button class="task-del" onclick="delTask('${t.id}')" title="Remover">✕</button>
-            </div>`).join('')
-          : `<div class="empty-msg">Nenhuma tarefa ainda</div>`}
+        ${tasks.length?tasks.map(t=>`<div class="task-row">
+          <div class="status-dot ${DOT[t.status]}"></div>
+          <div class="task-info">
+            <div class="task-name-el" onclick="openEditTask('${t.id}')">${t.name}</div>
+            <div class="task-meta">
+              <span class="tbadge ${TYPES[t.type].cls}">${TYPES[t.type].label}</span>
+              <select class="status-sel" onchange="changeStatus('${t.id}',this.value)">
+                <option value="todo"${t.status==='todo'?' selected':''}>A fazer</option>
+                <option value="doing"${t.status==='doing'?' selected':''}>Em andamento</option>
+                <option value="done"${t.status==='done'?' selected':''}>Concluído</option>
+              </select>
+              ${t.note?`<span class="note-inline" title="${t.note}">${t.note}</span>`:''}
+            </div>
+          </div>
+          <button class="task-del" onclick="delTask('${t.id}')" title="Remover">✕</button>
+        </div>`).join(''):`<div class="empty-msg">Nenhuma tarefa ainda</div>`}
       </div>
       <div class="add-row">
         <input class="add-inp" id="qi-${c.id}" placeholder="Nova tarefa..." onkeydown="if(event.key==='Enter')quickAdd('${c.id}')" />
-        <select class="add-sel" id="qt-${c.id}">
-          ${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}
-        </select>
+        <select class="add-sel" id="qt-${c.id}">${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
         <button class="add-btn" onclick="quickAdd('${c.id}')">+ Add</button>
       </div>
     </div>`;
   }).join('');
 }
 
-function quickAdd(cid){
-  const inp=document.getElementById('qi-'+cid);
-  const name=inp.value.trim();if(!name)return;
-  data.tasks.push({id:'t'+(nid++),client:cid,name,type:document.getElementById('qt-'+cid).value,status:'todo',note:''});
-  inp.value='';persist();renderClients();
-}
-
-function changeStatus(tid,status){
-  const t=data.tasks.find(x=>x.id===tid);if(t){t.status=status;persist();}renderClients();
-}
-
-function delTask(tid){
-  if(!confirm('Remover esta tarefa?'))return;
-  data.tasks=data.tasks.filter(x=>x.id!==tid);persist();renderClients();
-}
-
+function quickAdd(cid){const inp=document.getElementById('qi-'+cid);const name=inp.value.trim();if(!name)return;data.tasks.push({id:'t'+(nid++),client:cid,name,type:document.getElementById('qt-'+cid).value,status:'todo',note:''});inp.value='';persist();renderClients();}
+function changeStatus(tid,status){const t=data.tasks.find(x=>x.id===tid);if(t){t.status=status;persist();}renderClients();}
+function delTask(tid){if(!confirm('Remover esta tarefa?'))return;data.tasks=data.tasks.filter(x=>x.id!==tid);persist();renderClients();}
 function openEditTask(tid){
-  const t=data.tasks.find(x=>x.id===tid);if(!t)return;
-  editingTask=tid;
-  document.getElementById('tm-title').textContent='Editar tarefa';
-  document.getElementById('tm-name').value=t.name;
-  document.getElementById('tm-type').value=t.type;
-  document.getElementById('tm-status').value=t.status;
-  document.getElementById('tm-note').value=t.note||'';
+  const t=data.tasks.find(x=>x.id===tid);if(!t)return;editingTask=tid;
+  document.getElementById('tm-title').textContent='Editar tarefa';document.getElementById('tm-name').value=t.name;document.getElementById('tm-type').value=t.type;document.getElementById('tm-status').value=t.status;document.getElementById('tm-note').value=t.note||'';
   openModal('task-modal');
 }
-
 function saveTaskModal(){
   const name=document.getElementById('tm-name').value.trim();if(!name)return;
   const t=data.tasks.find(x=>x.id===editingTask);
   if(t){t.name=name;t.type=document.getElementById('tm-type').value;t.status=document.getElementById('tm-status').value;t.note=document.getElementById('tm-note').value.trim();}
   persist();closeModal('task-modal');renderClients();
 }
+function openRem(cid){remClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('rem-text').value=c?c.relembrete||'':'';openModal('rem-modal');setTimeout(()=>document.getElementById('rem-text').focus(),50);}
+function saveRemModal(){const c=data.clients.find(x=>x.id===remClient);if(c)c.relembrete=document.getElementById('rem-text').value.trim();persist();closeModal('rem-modal');renderClients();}
+function openNewClient(){editingClient=null;document.getElementById('cm-title').textContent='Novo cliente';document.getElementById('cm-name').value='';document.getElementById('cm-del-area').innerHTML='';openModal('client-modal');setTimeout(()=>document.getElementById('cm-name').focus(),50);}
+function openEditClient(cid){editingClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('cm-title').textContent='Editar cliente';document.getElementById('cm-name').value=c?c.name:'';document.getElementById('cm-del-area').innerHTML=`<button class="del-client-btn" onclick="delClient('${cid}')">🗑 Remover cliente</button>`;openModal('client-modal');}
+function saveClientModal(){const name=document.getElementById('cm-name').value.trim();if(!name)return;if(editingClient){const c=data.clients.find(x=>x.id===editingClient);if(c)c.name=name;}else data.clients.push({id:'c'+(nid++),name,relembrete:''});persist();closeModal('client-modal');renderClients();}
+function delClient(cid){if(!confirm('Remover este cliente e todas as tarefas?'))return;data.clients=data.clients.filter(x=>x.id!==cid);data.tasks=data.tasks.filter(x=>x.client!==cid);persist();closeModal('client-modal');renderClients();}
 
-function openRem(cid){
-  remClient=cid;
-  const c=data.clients.find(x=>x.id===cid);
-  document.getElementById('rem-text').value=c?c.relembrete||'':'';
-  openModal('rem-modal');
-  setTimeout(()=>document.getElementById('rem-text').focus(),50);
-}
+function render(){renderEq();renderClients();}
 
-function saveRemModal(){
-  const c=data.clients.find(x=>x.id===remClient);
-  if(c)c.relembrete=document.getElementById('rem-text').value.trim();
-  persist();closeModal('rem-modal');renderClients();
-}
-
-function openNewClient(){
-  editingClient=null;
-  document.getElementById('cm-title').textContent='Novo cliente';
-  document.getElementById('cm-name').value='';
-  document.getElementById('cm-del-area').innerHTML='';
-  openModal('client-modal');
-  setTimeout(()=>document.getElementById('cm-name').focus(),50);
-}
-
-function openEditClient(cid){
-  editingClient=cid;
-  const c=data.clients.find(x=>x.id===cid);
-  document.getElementById('cm-title').textContent='Editar cliente';
-  document.getElementById('cm-name').value=c?c.name:'';
-  document.getElementById('cm-del-area').innerHTML=`<button class="del-client-btn" onclick="delClient('${cid}')">🗑 Remover cliente</button>`;
-  openModal('client-modal');
-}
-
-function saveClientModal(){
-  const name=document.getElementById('cm-name').value.trim();if(!name)return;
-  if(editingClient){
-    const c=data.clients.find(x=>x.id===editingClient);if(c)c.name=name;
-  } else {
-    data.clients.push({id:'c'+(nid++),name,relembrete:''});
-  }
-  persist();closeModal('client-modal');renderClients();
-}
-
-function delClient(cid){
-  if(!confirm('Remover este cliente e todas as tarefas?'))return;
-  data.clients=data.clients.filter(x=>x.id!==cid);
-  data.tasks=data.tasks.filter(x=>x.client!==cid);
-  persist();closeModal('client-modal');renderClients();
-}
-
-['task-modal','rem-modal','client-modal','person-modal','eq-modal'].forEach(id=>{
+['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>{
   document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
 });
 document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')
-    ['task-modal','rem-modal','client-modal','person-modal','eq-modal'].forEach(id=>document.getElementById(id).classList.remove('open'));
+  if(e.key==='Escape')['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>document.getElementById(id).classList.remove('open'));
 });
 
-renderEq();
-renderClients();
+hydrate();
 </script>
 </body>
 </html>
