@@ -85,10 +85,8 @@ tr:hover .del-eq{color:#555}
 .task-row{padding:8px 0;border-bottom:1px solid #F0EDE0}
 .task-row:last-child{border-bottom:none}
 .task-top{display:flex;align-items:flex-start;gap:9px}
-.status-dot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0}
-.dot-todo{background:#ccc}
-.dot-doing{background:var(--orange)}
-.dot-done{background:#4CAF50}
+.task-cb{width:17px;height:17px;border-radius:5px;border:1.5px solid #ddd;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;flex-shrink:0;padding:0;margin-top:2px;transition:all .15s}
+.task-cb.cb-done{background:#4CAF50;border-color:#4CAF50}
 .task-info{flex:1;min-width:0}
 .task-name-el{font-size:13px;font-weight:700;color:var(--black);cursor:pointer;font-family:Arial,sans-serif;line-height:1.4}
 .task-name-el:hover{color:var(--pink)}
@@ -103,26 +101,9 @@ tr:hover .del-eq{color:#555}
 .tb-copy{background:#fff8e0;color:#a07000}
 .tb-coord{background:#ffe8e0;color:#c03000}
 .tb-outro{background:#f0f0f0;color:#555}
-.status-sel{padding:2px 7px;border-radius:99px;border:1px solid #ddd;background:#f8f8f8;color:#555;font-size:10px;font-family:Arial,sans-serif;cursor:pointer;font-weight:700;text-transform:uppercase}
 .task-del{background:none;border:none;color:transparent;cursor:pointer;font-size:13px;padding:0 0 0 2px;flex-shrink:0}
 .task-row:hover .task-del{color:#ccc}
 .empty-msg{font-size:12px;color:#bbb;text-align:center;padding:16px 0;font-family:Arial,sans-serif}
-
-/* CHECKLIST */
-.checklist-area{margin:5px 0 2px 17px;padding-left:10px;border-left:2px solid #F0EDE0}
-.cl-item{display:flex;align-items:center;gap:6px;padding:3px 0}
-.cl-check{width:15px;height:15px;border-radius:4px;border:1.5px solid #ddd;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0;padding:0;transition:all .12s}
-.cl-check.done{background:linear-gradient(90deg,#E8185C,#F7931E);border-color:transparent}
-.cl-text{font-size:12px;font-family:Arial,sans-serif;color:#333;flex:1;line-height:1.4}
-.cl-text.cl-done{text-decoration:line-through;color:#bbb}
-.cl-del{background:none;border:none;color:transparent;cursor:pointer;font-size:11px;padding:0 2px;flex-shrink:0}
-.cl-item:hover .cl-del{color:#ddd}
-.cl-add-row{display:flex;align-items:center;gap:5px;margin-top:3px;padding-top:3px}
-.cl-inp{flex:1;font-size:12px;font-family:Arial,sans-serif;border:none;border-bottom:1px solid #E0DCC8;background:transparent;color:var(--black);padding:2px 0;outline:none;min-width:0}
-.cl-inp::placeholder{color:#ccc}
-.cl-inp:focus{border-bottom-color:var(--pink)}
-.cl-add-btn{background:none;border:none;color:#bbb;font-size:17px;font-weight:900;cursor:pointer;padding:0;line-height:1;flex-shrink:0}
-.cl-add-btn:hover{color:var(--pink)}
 
 /* ADD ROW */
 .add-row{padding:10px 18px;display:flex;gap:6px;background:#FAFAF5;border-top:1px solid var(--border);flex-wrap:wrap}
@@ -498,37 +479,17 @@ function renderClients(){
   grid.innerHTML=data.clients.map(c=>{
     const tasks=data.tasks.filter(t=>t.client===c.id);
     const tasksHtml=tasks.length?tasks.map(t=>{
-      const cl=t.checklist||[];
-      const doneCount=cl.filter(i=>i.done).length;
-      const prog=cl.length?` <span style="font-size:10px;color:#bbb;font-weight:400;font-family:Arial,sans-serif">${doneCount}/${cl.length}</span>`:'';
-      const checkItems=cl.map(item=>`<div class="cl-item">
-        <button class="cl-check${item.done?' done':''}" onclick="toggleCheck('${t.id}','${item.id}')">${item.done?'✓':''}</button>
-        <span class="cl-text${item.done?' cl-done':''}">${item.text}</span>
-        <button class="cl-del" onclick="delCheck('${t.id}','${item.id}')">✕</button>
-      </div>`).join('');
       return `<div class="task-row">
         <div class="task-top">
-          <div class="status-dot ${DOT[t.status]||'dot-todo'}"></div>
+          <button class="task-cb${t.status==='done'?' cb-done':''}" onclick="toggleDone('${t.id}')">${t.status==='done'?'✓':''}</button>
           <div class="task-info">
-            <div class="task-name-el${t.status==='done'?' done-text':''}" onclick="openEditTask('${t.id}')">${t.name}${prog}</div>
+            <div class="task-name-el${t.status==='done'?' done-text':''}" onclick="openEditTask('${t.id}')">${t.name}</div>
             <div class="task-meta">
               <span class="tbadge ${TYPES[t.type]?.cls||'tb-outro'}">${TYPES[t.type]?.label||'Outro'}</span>
               ${dueBadge(t.date||'')}
-              <select class="status-sel" onchange="changeStatus('${t.id}',this.value)">
-                <option value="todo"${t.status==='todo'?' selected':''}>A fazer</option>
-                <option value="doing"${t.status==='doing'?' selected':''}>Em andamento</option>
-                <option value="done"${t.status==='done'?' selected':''}>Concluído</option>
-              </select>
             </div>
           </div>
           <button class="task-del" onclick="delTask('${t.id}')">✕</button>
-        </div>
-        <div class="checklist-area">
-          ${checkItems}
-          <div class="cl-add-row">
-            <input class="cl-inp" id="ci-${t.id}" placeholder="+ item do checklist..." onkeydown="if(event.key==='Enter')addCheck('${t.id}')" />
-            <button class="cl-add-btn" onclick="addCheck('${t.id}')">+</button>
-          </div>
         </div>
       </div>`;
     }).join(''):`<div class="empty-msg">Nenhuma tarefa ainda</div>`;
@@ -559,6 +520,7 @@ function quickAdd(cid){
   persist();renderClients();
 }
 function changeStatus(tid,status){const t=data.tasks.find(x=>x.id===tid);if(t){t.status=status;persist();}renderClients();}
+function toggleDone(tid){const t=data.tasks.find(x=>x.id===tid);if(!t)return;t.status=t.status==='done'?'todo':'done';persist();renderClients();}
 function delTask(tid){if(!confirm('Remover esta tarefa?'))return;data.tasks=data.tasks.filter(x=>x.id!==tid);persist();renderClients();}
 function openEditTask(tid){
   const t=data.tasks.find(x=>x.id===tid);if(!t)return;editingTask=tid;
@@ -577,25 +539,6 @@ function saveTaskModal(){
   persist();closeModal('task-modal');renderClients();
 }
 
-/* ===== CHECKLIST ===== */
-function addCheck(tid){
-  const inp=document.getElementById('ci-'+tid);
-  const text=inp?.value?.trim();if(!text)return;
-  const t=data.tasks.find(x=>x.id===tid);if(!t)return;
-  if(!t.checklist)t.checklist=[];
-  t.checklist.push({id:'ci'+(nid++),text,done:false});
-  inp.value='';persist();renderClients();
-}
-function toggleCheck(tid,cid){
-  const t=data.tasks.find(x=>x.id===tid);if(!t||!t.checklist)return;
-  const item=t.checklist.find(x=>x.id===cid);if(item)item.done=!item.done;
-  persist();renderClients();
-}
-function delCheck(tid,cid){
-  const t=data.tasks.find(x=>x.id===tid);if(!t||!t.checklist)return;
-  t.checklist=t.checklist.filter(x=>x.id!==cid);
-  persist();renderClients();
-}
 
 /* ===== RELEMBRETE ===== */
 function openRem(cid){remClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('rem-text').value=c?c.relembrete||'':'';openModal('rem-modal');setTimeout(()=>document.getElementById('rem-text').focus(),50);}
