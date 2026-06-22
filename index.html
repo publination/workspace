@@ -133,7 +133,7 @@ tr:hover .del-eq{color:#555}
 .add-btn{padding:7px 13px;border-radius:8px;border:none;background:var(--grad);color:#fff;font-size:11px;font-weight:900;text-transform:uppercase;cursor:pointer;white-space:nowrap}
 .add-btn:hover{opacity:0.88}
 
-/* MINHA ESTACAO */
+/* MINHA ESTAÇÃO */
 .minha-card{background:#fff;border:1.5px solid var(--border);border-radius:16px;overflow:hidden;border-left:4px solid var(--orange)}
 .minha-list{padding:4px 18px 4px}
 .mt-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #F0EDE0}
@@ -186,7 +186,7 @@ tr:hover .del-eq{color:#555}
       <div class="sync-dot" id="sync-dot"></div>
       <span id="sync-text">conectando...</span>
     </div>
-    <button class="btn-cfg" onclick="openSetup()">&#9881; sync</button>
+    <button class="btn-cfg" onclick="openSetup()">⚙ sync</button>
     <button class="btn-outline" onclick="openAddPerson()">+ Pessoa</button>
     <button class="btn-grad" onclick="openNewClient()">+ Cliente</button>
   </div>
@@ -196,7 +196,7 @@ tr:hover .del-eq{color:#555}
 <div class="section-block">
   <div class="section-title">Minha equipe</div>
   <div class="equipe-card">
-    <div class="eq-head"><span class="eq-head-title">Delegacoes</span></div>
+    <div class="eq-head"><span class="eq-head-title">Delegações</span></div>
     <table class="eq-table">
       <thead><tr>
         <th style="width:100px">Pessoa</th>
@@ -209,7 +209,7 @@ tr:hover .del-eq{color:#555}
     </table>
     <div class="eq-add-area">
       <select class="eq-sel" id="eq-person-sel" style="min-width:90px"></select>
-      <input class="eq-inp" id="eq-pedido-inp" placeholder="O que voce pediu..." />
+      <input class="eq-inp" id="eq-pedido-inp" placeholder="O que você pediu..." />
       <input class="eq-date" id="eq-date-inp" type="date" />
       <button class="btn-grad" onclick="quickAddEq()">+ Add</button>
     </div>
@@ -222,9 +222,9 @@ tr:hover .del-eq{color:#555}
   <div class="cards-grid" id="cards-grid"></div>
 </div>
 
-<!-- 3. MINHA ESTACAO -->
+<!-- 3. MINHA ESTAÇÃO -->
 <div class="section-block">
-  <div class="section-title">Minha estacao</div>
+  <div class="section-title">Minha estação</div>
   <div class="minha-card">
     <div class="minha-list" id="minha-list"></div>
     <div class="mt-add-row">
@@ -239,14 +239,14 @@ tr:hover .del-eq{color:#555}
 <!-- MODAL: Setup -->
 <div class="modal-bg" id="setup-modal">
   <div class="modal">
-    <h3>Configurar sincronizacao</h3>
+    <h3>⚙ Configurar sincronização</h3>
     <div class="setup-steps">
       <b>Passo a passo:</b><br>
       1. Acesse <a href="https://sheets.new" target="_blank">sheets.new</a> e crie uma planilha<br>
-      2. No menu, clique em <b>Extensoes &rarr; Apps Script</b><br>
-      3. Apague o codigo e cole o script fornecido<br>
-      4. Clique em <b>Implantar &rarr; Nova implantacao</b><br>
-      5. Tipo: <b>App da Web</b> &mdash; Acesso: <b>Qualquer pessoa</b><br>
+      2. No menu, clique em <b>Extensões → Apps Script</b><br>
+      3. Apague o código e cole o script fornecido<br>
+      4. Clique em <b>Implantar → Nova implantação</b><br>
+      5. Tipo: <b>App da Web</b> — Acesso: <b>Qualquer pessoa</b><br>
       6. Copie o link gerado e cole abaixo
     </div>
     <div class="field">
@@ -264,16 +264,16 @@ tr:hover .del-eq{color:#555}
 <div class="modal-bg" id="task-modal">
   <div class="modal">
     <h3 id="tm-title">Editar tarefa</h3>
-    <div class="field"><label>Titulo</label><input id="tm-name" /></div>
+    <div class="field"><label>Título</label><input id="tm-name" /></div>
     <div class="field"><label>Tipo</label>
       <select id="tm-type">
         <option value="feed">Feed</option>
         <option value="stories">Stories</option>
         <option value="reels">Reels</option>
         <option value="publi">Publi</option>
-        <option value="edicao">Edicao de video</option>
+        <option value="edicao">Edição de vídeo</option>
         <option value="copy">Copy / Legenda</option>
-        <option value="coord">Coordenacao / Equipe</option>
+        <option value="coord">Coordenação / Equipe</option>
         <option value="outro">Outro</option>
       </select>
     </div>
@@ -281,11 +281,11 @@ tr:hover .del-eq{color:#555}
       <select id="tm-status">
         <option value="todo">A fazer</option>
         <option value="doing">Em andamento</option>
-        <option value="done">Concluido</option>
+        <option value="done">Concluído</option>
       </select>
     </div>
     <div class="field"><label>Data de entrega</label><input id="tm-date" type="date" /></div>
-    <div class="field"><label>Obs.</label><textarea id="tm-note" placeholder="Observacoes..."></textarea></div>
+    <div class="field"><label>Obs.</label><textarea id="tm-note" placeholder="Observações..."></textarea></div>
     <div class="modal-actions">
       <button class="m-cancel" onclick="closeModal('task-modal')">Cancelar</button>
       <button class="m-save" onclick="saveTaskModal()">Salvar</button>
@@ -297,7 +297,7 @@ tr:hover .del-eq{color:#555}
 <div class="modal-bg" id="rem-modal">
   <div class="modal">
     <h3>Relembrete</h3>
-    <div class="field"><label>O que voce fez por ultimo nesse cliente?</label>
+    <div class="field"><label>O que você fez por último nesse cliente?</label>
       <textarea id="rem-text" style="min-height:90px" placeholder="Ex: Postei o feed de segunda, agendei os stories da semana..."></textarea>
     </div>
     <div class="modal-actions">
@@ -335,12 +335,12 @@ tr:hover .del-eq{color:#555}
   </div>
 </div>
 
-<!-- MODAL: Delegacao -->
+<!-- MODAL: Delegação -->
 <div class="modal-bg" id="eq-modal">
   <div class="modal">
-    <h3>Editar delegacao</h3>
+    <h3>Editar delegação</h3>
     <div class="field"><label>Pessoa</label><select id="em-person"></select></div>
-    <div class="field"><label>O que voce pediu</label><textarea id="em-pedido" style="min-height:64px"></textarea></div>
+    <div class="field"><label>O que você pediu</label><textarea id="em-pedido" style="min-height:64px"></textarea></div>
     <div class="field"><label>Data de entrega</label><input id="em-date" type="date" /></div>
     <div class="field"><label>Status</label>
       <select id="em-status">
@@ -357,7 +357,7 @@ tr:hover .del-eq{color:#555}
 </div>
 
 <script>
-const TYPES={feed:{label:'Feed',cls:'tb-feed'},stories:{label:'Stories',cls:'tb-stories'},reels:{label:'Reels',cls:'tb-reels'},publi:{label:'Publi',cls:'tb-publi'},edicao:{label:'Edicao',cls:'tb-edicao'},copy:{label:'Copy',cls:'tb-copy'},coord:{label:'Coord.',cls:'tb-coord'},outro:{label:'Outro',cls:'tb-outro'}};
+const TYPES={feed:{label:'Feed',cls:'tb-feed'},stories:{label:'Stories',cls:'tb-stories'},reels:{label:'Reels',cls:'tb-reels'},publi:{label:'Publi',cls:'tb-publi'},edicao:{label:'Edição',cls:'tb-edicao'},copy:{label:'Copy',cls:'tb-copy'},coord:{label:'Coord.',cls:'tb-coord'},outro:{label:'Outro',cls:'tb-outro'}};
 const DOT={todo:'dot-todo',doing:'dot-doing',done:'dot-done'};
 const PCLS=['pA','pB','pC','pD'];
 
@@ -366,6 +366,7 @@ let nid=100;
 let editingTask=null,editingClient=null,editingEq=null,remClient=null,saveTimer=null;
 let API_URL=localStorage.getItem('ubws_api_url')||'';
 
+/* ===== SYNC ===== */
 function setSyncStatus(state,text){
   document.getElementById('sync-dot').className='sync-dot '+state;
   document.getElementById('sync-text').textContent=text;
@@ -394,13 +395,15 @@ function persist(){
         await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:payload,redirect:'follow'});
         setSyncStatus('ok','sincronizado');
       }catch(e){setSyncStatus('error','erro ao salvar');}
-    }else{localStorage.setItem('ubws_fallback',payload);setSyncStatus('error','sem sync - salvo local');}
+    }else{localStorage.setItem('ubws_fallback',payload);setSyncStatus('error','sem sync — salvo local');}
   },600);
 }
 
+/* ===== SETUP ===== */
 function openSetup(){document.getElementById('api-url-input').value=API_URL;openModal('setup-modal');}
 function saveSetup(){const url=document.getElementById('api-url-input').value.trim();if(!url)return;API_URL=url;localStorage.setItem('ubws_api_url',url);closeModal('setup-modal');hydrate();}
 
+/* ===== UTILS ===== */
 function closeModal(id){document.getElementById(id).classList.remove('open')}
 function openModal(id){document.getElementById(id).classList.add('open')}
 function pCls(pid){const idx=data.persons.findIndex(p=>p.id===pid);return PCLS[Math.max(0,idx)%PCLS.length]}
@@ -413,30 +416,31 @@ function dueCls(d){
   const diff=Math.ceil((target-today)/864e5);
   return diff<0?'due-late':diff<=1?'due-soon':'due-ok';
 }
-function fmtDate(d){if(!d)return '';const[y,m,dd]=d.split('-');return dd+'/'+m;}
-function dueBadge(d){if(!d)return '';return '<span class="'+dueCls(d)+'">'+fmtDate(d)+'</span>';}
+function fmtDate(d){if(!d)return '';const[y,m,dd]=d.split('-');return `${dd}/${m}`}
+function dueBadge(d){if(!d)return '';return `<span class="${dueCls(d)}">${fmtDate(d)}</span>`;}
 
+/* ===== EQUIPE ===== */
 function renderEq(){
   const sel=document.getElementById('eq-person-sel');
   sel.innerHTML=data.persons.length
-    ?data.persons.map(p=>'<option value="'+p.id+'">'+p.name+'</option>').join('')
-    :'<option value="">adicione uma pessoa</option>';
+    ?data.persons.map(p=>`<option value="${p.id}">${p.name}</option>`).join('')
+    :'<option value="">— adicione uma pessoa —</option>';
   const body=document.getElementById('eq-body');
   if(!data.delegacoes.length){
-    body.innerHTML='<tr><td colspan="5" style="text-align:center;color:#555;font-size:12px;padding:18px;font-family:Arial,sans-serif">Nenhuma delegacao ainda</td></tr>';
+    body.innerHTML=`<tr><td colspan="5" style="text-align:center;color:#555;font-size:12px;padding:18px;font-family:Arial,sans-serif">Nenhuma delegação ainda</td></tr>`;
     return;
   }
-  body.innerHTML=data.delegacoes.map(d=>'<tr style="cursor:pointer" onclick="openEditEq(\''+d.id+'\')">'
-    +'<td><span class="person-pill '+pCls(d.person)+'">'+pName(d.person)+'</span></td>'
-    +'<td style="font-family:Arial,sans-serif">'+d.pedido+'</td>'
-    +'<td>'+(d.date?'<span class="'+dueCls(d.date)+'">'+fmtDate(d.date)+'</span>':'')+'</td>'
-    +'<td><select class="eq-status-sel" onclick="event.stopPropagation()" onchange="changeEqStatus(\''+d.id+'\',this.value)">'
-    +'<option value="aguardando"'+(d.status==='aguardando'?' selected':'')+'>Aguardando</option>'
-    +'<option value="andamento"'+(d.status==='andamento'?' selected':'')+'>Em andamento</option>'
-    +'<option value="entregue"'+(d.status==='entregue'?' selected':'')+'>Entregue</option>'
-    +'</select></td>'
-    +'<td><button class="del-eq" onclick="event.stopPropagation();delEq(\''+d.id+'\')">x</button></td>'
-    +'</tr>').join('');
+  body.innerHTML=data.delegacoes.map(d=>`<tr style="cursor:pointer" onclick="openEditEq('${d.id}')">
+    <td><span class="person-pill ${pCls(d.person)}">${pName(d.person)}</span></td>
+    <td style="font-family:Arial,sans-serif">${d.pedido}</td>
+    <td>${d.date?`<span class="${dueCls(d.date)}">${fmtDate(d.date)}</span>`:''}</td>
+    <td><select class="eq-status-sel" onclick="event.stopPropagation()" onchange="changeEqStatus('${d.id}',this.value)">
+      <option value="aguardando"${d.status==='aguardando'?' selected':''}>Aguardando</option>
+      <option value="andamento"${d.status==='andamento'?' selected':''}>Em andamento</option>
+      <option value="entregue"${d.status==='entregue'?' selected':''}>Entregue</option>
+    </select></td>
+    <td><button class="del-eq" onclick="event.stopPropagation();delEq('${d.id}')">✕</button></td>
+  </tr>`).join('');
 }
 function changeEqStatus(eid,status){const d=data.delegacoes.find(x=>x.id===eid);if(d){d.status=status;persist();}}
 function quickAddEq(){
@@ -444,7 +448,7 @@ function quickAddEq(){
   const pedido=document.getElementById('eq-pedido-inp').value.trim();
   const date=document.getElementById('eq-date-inp').value;
   if(!pid||!pedido)return;
-  data.delegacoes.push({id:'d'+(nid++),person:pid,pedido:pedido,date:date,status:'aguardando'});
+  data.delegacoes.push({id:'d'+(nid++),person:pid,pedido,date,status:'aguardando'});
   document.getElementById('eq-pedido-inp').value='';
   document.getElementById('eq-date-inp').value='';
   persist();renderEq();
@@ -452,7 +456,7 @@ function quickAddEq(){
 function openEditEq(eid){
   const d=data.delegacoes.find(x=>x.id===eid);if(!d)return;editingEq=eid;
   const sel=document.getElementById('em-person');
-  sel.innerHTML=data.persons.map(p=>'<option value="'+p.id+'"'+(p.id===d.person?' selected':'')+'>'+p.name+'</option>').join('');
+  sel.innerHTML=data.persons.map(p=>`<option value="${p.id}"${p.id===d.person?' selected':''}>${p.name}</option>`).join('');
   document.getElementById('em-pedido').value=d.pedido;
   document.getElementById('em-date').value=d.date||'';
   document.getElementById('em-status').value=d.status;
@@ -463,100 +467,101 @@ function saveEqModal(){
   if(d){d.person=document.getElementById('em-person').value;d.pedido=document.getElementById('em-pedido').value.trim();d.date=document.getElementById('em-date').value;d.status=document.getElementById('em-status').value;}
   persist();closeModal('eq-modal');renderEq();
 }
-function delEq(eid){if(!confirm('Remover esta delegacao?'))return;data.delegacoes=data.delegacoes.filter(x=>x.id!==eid);persist();renderEq();}
+function delEq(eid){if(!confirm('Remover esta delegação?'))return;data.delegacoes=data.delegacoes.filter(x=>x.id!==eid);persist();renderEq();}
 
-function openAddPerson(){renderPersonsList();document.getElementById('pm-name').value='';openModal('person-modal');setTimeout(function(){document.getElementById('pm-name').focus();},50);}
+/* ===== PESSOAS ===== */
+function openAddPerson(){renderPersonsList();document.getElementById('pm-name').value='';openModal('person-modal');setTimeout(()=>document.getElementById('pm-name').focus(),50);}
 function renderPersonsList(){
   const list=document.getElementById('persons-list');
   if(!data.persons.length){list.innerHTML='<div style="font-size:12px;color:#bbb;font-family:Arial,sans-serif;margin-bottom:4px">Nenhuma pessoa ainda</div>';return;}
-  list.innerHTML=data.persons.map(p=>'<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:8px;background:#FAFAF5;margin-bottom:6px">'
-    +'<span style="font-size:13px;font-weight:700;font-family:Arial,sans-serif">'+p.name+'</span>'
-    +'<button onclick="delPerson(\''+p.id+'\')" style="background:none;border:none;color:#E8185C;cursor:pointer;font-size:13px;font-weight:900;padding:0 4px">x</button>'
-    +'</div>').join('');
+  list.innerHTML=data.persons.map(p=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:7px 10px;border-radius:8px;background:#FAFAF5;margin-bottom:6px">
+    <span style="font-size:13px;font-weight:700;font-family:Arial,sans-serif">${p.name}</span>
+    <button onclick="delPerson('${p.id}')" style="background:none;border:none;color:#E8185C;cursor:pointer;font-size:13px;font-weight:900;padding:0 4px">✕</button>
+  </div>`).join('');
 }
 function delPerson(pid){if(!confirm('Remover esta pessoa?'))return;data.persons=data.persons.filter(x=>x.id!==pid);data.delegacoes=data.delegacoes.filter(x=>x.person!==pid);persist();renderPersonsList();renderEq();}
 function savePersonModal(){
   const name=document.getElementById('pm-name').value.trim();if(!name)return;
-  data.persons.push({id:'p'+(nid++),name:name});
+  data.persons.push({id:'p'+(nid++),name});
   document.getElementById('pm-name').value='';
   persist();renderPersonsList();renderEq();
-  setTimeout(function(){document.getElementById('pm-name').focus();},50);
+  setTimeout(()=>document.getElementById('pm-name').focus(),50);
 }
 
+/* ===== CLIENTES ===== */
 function renderClients(){
   const grid=document.getElementById('cards-grid');
   if(!data.clients.length){
-    grid.innerHTML='<div style="font-size:13px;color:#bbb;font-family:Arial,sans-serif;padding:20px 0">Clique em "+ Cliente" para comecar.</div>';
+    grid.innerHTML=`<div style="font-size:13px;color:#bbb;font-family:Arial,sans-serif;padding:20px 0">Clique em "+ Cliente" para começar.</div>`;
     return;
   }
-  grid.innerHTML=data.clients.map(function(c){
-    const tasks=data.tasks.filter(function(t){return t.client===c.id;});
-    const tasksHtml=tasks.length?tasks.map(function(t){
+  grid.innerHTML=data.clients.map(c=>{
+    const tasks=data.tasks.filter(t=>t.client===c.id);
+    const tasksHtml=tasks.length?tasks.map(t=>{
       const cl=t.checklist||[];
-      const doneCount=cl.filter(function(i){return i.done;}).length;
-      const prog=cl.length?' <span style="font-size:10px;color:#bbb;font-weight:400;font-family:Arial,sans-serif">'+doneCount+'/'+cl.length+'</span>':'';
-      const checkItems=cl.map(function(item){
-        return '<div class="cl-item">'
-          +'<button class="cl-check'+(item.done?' done':'')+'" onclick="toggleCheck(\''+t.id+'\',\''+item.id+'\')">'+(item.done?'v':'')+'</button>'
-          +'<span class="cl-text'+(item.done?' cl-done':'\'")>'+item.text+'</span>'
-          +'<button class="cl-del" onclick="delCheck(\''+t.id+'\',\''+item.id+'\')">x</button>'
-          +'</div>';
-      }).join('');
-      return '<div class="task-row">'
-        +'<div class="task-top">'
-        +'<div class="status-dot '+(DOT[t.status]||'dot-todo')+'"></div>'
-        +'<div class="task-info">'
-        +'<div class="task-name-el'+(t.status==='done'?' done-text':'')+'" onclick="openEditTask(\''+t.id+'\')">'+t.name+prog+'</div>'
-        +'<div class="task-meta">'
-        +'<span class="tbadge '+(TYPES[t.type]?TYPES[t.type].cls:'tb-outro')+'">'+(TYPES[t.type]?TYPES[t.type].label:'Outro')+'</span>'
-        +dueBadge(t.date||'')
-        +'<select class="status-sel" onchange="changeStatus(\''+t.id+'\',this.value)">'
-        +'<option value="todo"'+(t.status==='todo'?' selected':'')+'>A fazer</option>'
-        +'<option value="doing"'+(t.status==='doing'?' selected':'')+'>Em andamento</option>'
-        +'<option value="done"'+(t.status==='done'?' selected':'')+'>Concluido</option>'
-        +'</select>'
-        +'</div></div>'
-        +'<button class="task-del" onclick="delTask(\''+t.id+'\')">x</button>'
-        +'</div>'
-        +'<div class="checklist-area">'
-        +checkItems
-        +'<div class="cl-add-row">'
-        +'<input class="cl-inp" id="ci-'+t.id+'" placeholder="+ item do checklist..." onkeydown="if(event.key===\'Enter\')addCheck(\''+t.id+'\')" />'
-        +'<button class="cl-add-btn" onclick="addCheck(\''+t.id+'\')">+</button>'
-        +'</div></div>'
-        +'</div>';
-    }).join(''):'<div class="empty-msg">Nenhuma tarefa ainda</div>';
-    const typeOpts=Object.entries(TYPES).map(function(e){return '<option value="'+e[0]+'">'+e[1].label+'</option>';}).join('');
-    return '<div class="client-card">'
-      +'<div class="card-head"><span class="card-name">'+c.name+'</span><button class="icon-btn" onclick="openEditClient(\''+c.id+'\')">E</button></div>'
-      +'<div class="relembrete" onclick="openRem(\''+c.id+'\')">'
-      +'<div class="rem-label">Relembrete</div>'
-      +(c.relembrete?'<div class="rem-text">'+c.relembrete+'</div>':'<div class="rem-empty">Clique para registrar o que fez por ultimo</div>')
-      +'</div>'
-      +'<div class="tasks-area">'+tasksHtml+'</div>'
-      +'<div class="add-row">'
-      +'<input class="add-inp" id="qi-'+c.id+'" placeholder="Nova tarefa..." onkeydown="if(event.key===\'Enter\')quickAdd(\''+c.id+'\')" />'
-      +'<select class="add-sel" id="qt-'+c.id+'">'+typeOpts+'</select>'
-      +'<input class="add-date" id="qd-'+c.id+'" type="date" title="Data de entrega" />'
-      +'<button class="add-btn" onclick="quickAdd(\''+c.id+'\')">+ Add</button>'
-      +'</div>'
-      +'</div>';
+      const doneCount=cl.filter(i=>i.done).length;
+      const prog=cl.length?` <span style="font-size:10px;color:#bbb;font-weight:400;font-family:Arial,sans-serif">${doneCount}/${cl.length}</span>`:'';
+      const checkItems=cl.map(item=>`<div class="cl-item">
+        <button class="cl-check${item.done?' done':''}" onclick="toggleCheck('${t.id}','${item.id}')">${item.done?'✓':''}</button>
+        <span class="cl-text${item.done?' cl-done':''}">${item.text}</span>
+        <button class="cl-del" onclick="delCheck('${t.id}','${item.id}')">✕</button>
+      </div>`).join('');
+      return `<div class="task-row">
+        <div class="task-top">
+          <div class="status-dot ${DOT[t.status]||'dot-todo'}"></div>
+          <div class="task-info">
+            <div class="task-name-el${t.status==='done'?' done-text':''}" onclick="openEditTask('${t.id}')">${t.name}${prog}</div>
+            <div class="task-meta">
+              <span class="tbadge ${TYPES[t.type]?.cls||'tb-outro'}">${TYPES[t.type]?.label||'Outro'}</span>
+              ${dueBadge(t.date||'')}
+              <select class="status-sel" onchange="changeStatus('${t.id}',this.value)">
+                <option value="todo"${t.status==='todo'?' selected':''}>A fazer</option>
+                <option value="doing"${t.status==='doing'?' selected':''}>Em andamento</option>
+                <option value="done"${t.status==='done'?' selected':''}>Concluído</option>
+              </select>
+            </div>
+          </div>
+          <button class="task-del" onclick="delTask('${t.id}')">✕</button>
+        </div>
+        <div class="checklist-area">
+          ${checkItems}
+          <div class="cl-add-row">
+            <input class="cl-inp" id="ci-${t.id}" placeholder="+ item do checklist..." onkeydown="if(event.key==='Enter')addCheck('${t.id}')" />
+            <button class="cl-add-btn" onclick="addCheck('${t.id}')">+</button>
+          </div>
+        </div>
+      </div>`;
+    }).join(''):`<div class="empty-msg">Nenhuma tarefa ainda</div>`;
+    return `<div class="client-card">
+      <div class="card-head"><span class="card-name">${c.name}</span><button class="icon-btn" onclick="openEditClient('${c.id}')">✎</button></div>
+      <div class="relembrete" onclick="openRem('${c.id}')">
+        <div class="rem-label">● Relembrete</div>
+        ${c.relembrete?`<div class="rem-text">${c.relembrete}</div>`:`<div class="rem-empty">Clique para registrar o que fez por último</div>`}
+      </div>
+      <div class="tasks-area">${tasksHtml}</div>
+      <div class="add-row">
+        <input class="add-inp" id="qi-${c.id}" placeholder="Nova tarefa..." onkeydown="if(event.key==='Enter')quickAdd('${c.id}')" />
+        <select class="add-sel" id="qt-${c.id}">${Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${v.label}</option>`).join('')}</select>
+        <input class="add-date" id="qd-${c.id}" type="date" title="Data de entrega" />
+        <button class="add-btn" onclick="quickAdd('${c.id}')">+ Add</button>
+      </div>
+    </div>`;
   }).join('');
 }
 
 function quickAdd(cid){
   const inp=document.getElementById('qi-'+cid);
   const name=inp.value.trim();if(!name)return;
-  const qd=document.getElementById('qd-'+cid);
-  const date=qd?qd.value:'';
-  data.tasks.push({id:'t'+(nid++),client:cid,name:name,type:document.getElementById('qt-'+cid).value,status:'todo',note:'',date:date,checklist:[]});
-  inp.value='';if(qd)qd.value='';
+  const date=document.getElementById('qd-'+cid)?.value||'';
+  data.tasks.push({id:'t'+(nid++),client:cid,name,type:document.getElementById('qt-'+cid).value,status:'todo',note:'',date,checklist:[]});
+  inp.value='';
+  const qd=document.getElementById('qd-'+cid);if(qd)qd.value='';
   persist();renderClients();
 }
-function changeStatus(tid,status){const t=data.tasks.find(function(x){return x.id===tid;});if(t){t.status=status;persist();}renderClients();}
-function delTask(tid){if(!confirm('Remover esta tarefa?'))return;data.tasks=data.tasks.filter(function(x){return x.id!==tid;});persist();renderClients();}
+function changeStatus(tid,status){const t=data.tasks.find(x=>x.id===tid);if(t){t.status=status;persist();}renderClients();}
+function delTask(tid){if(!confirm('Remover esta tarefa?'))return;data.tasks=data.tasks.filter(x=>x.id!==tid);persist();renderClients();}
 function openEditTask(tid){
-  const t=data.tasks.find(function(x){return x.id===tid;});if(!t)return;editingTask=tid;
+  const t=data.tasks.find(x=>x.id===tid);if(!t)return;editingTask=tid;
   document.getElementById('tm-title').textContent='Editar tarefa';
   document.getElementById('tm-name').value=t.name;
   document.getElementById('tm-type').value=t.type;
@@ -567,77 +572,79 @@ function openEditTask(tid){
 }
 function saveTaskModal(){
   const name=document.getElementById('tm-name').value.trim();if(!name)return;
-  const t=data.tasks.find(function(x){return x.id===editingTask;});
+  const t=data.tasks.find(x=>x.id===editingTask);
   if(t){t.name=name;t.type=document.getElementById('tm-type').value;t.status=document.getElementById('tm-status').value;t.date=document.getElementById('tm-date').value;t.note=document.getElementById('tm-note').value.trim();}
   persist();closeModal('task-modal');renderClients();
 }
 
+/* ===== CHECKLIST ===== */
 function addCheck(tid){
   const inp=document.getElementById('ci-'+tid);
-  const text=inp?inp.value.trim():'';if(!text)return;
-  const t=data.tasks.find(function(x){return x.id===tid;});if(!t)return;
+  const text=inp?.value?.trim();if(!text)return;
+  const t=data.tasks.find(x=>x.id===tid);if(!t)return;
   if(!t.checklist)t.checklist=[];
-  t.checklist.push({id:'ci'+(nid++),text:text,done:false});
+  t.checklist.push({id:'ci'+(nid++),text,done:false});
   inp.value='';persist();renderClients();
 }
 function toggleCheck(tid,cid){
-  const t=data.tasks.find(function(x){return x.id===tid;});if(!t||!t.checklist)return;
-  const item=t.checklist.find(function(x){return x.id===cid;});if(item)item.done=!item.done;
+  const t=data.tasks.find(x=>x.id===tid);if(!t||!t.checklist)return;
+  const item=t.checklist.find(x=>x.id===cid);if(item)item.done=!item.done;
   persist();renderClients();
 }
 function delCheck(tid,cid){
-  const t=data.tasks.find(function(x){return x.id===tid;});if(!t||!t.checklist)return;
-  t.checklist=t.checklist.filter(function(x){return x.id!==cid;});
+  const t=data.tasks.find(x=>x.id===tid);if(!t||!t.checklist)return;
+  t.checklist=t.checklist.filter(x=>x.id!==cid);
   persist();renderClients();
 }
 
-function openRem(cid){remClient=cid;const c=data.clients.find(function(x){return x.id===cid;});document.getElementById('rem-text').value=c?c.relembrete||'':'';openModal('rem-modal');setTimeout(function(){document.getElementById('rem-text').focus();},50);}
-function saveRemModal(){const c=data.clients.find(function(x){return x.id===remClient;});if(c)c.relembrete=document.getElementById('rem-text').value.trim();persist();closeModal('rem-modal');renderClients();}
+/* ===== RELEMBRETE ===== */
+function openRem(cid){remClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('rem-text').value=c?c.relembrete||'':'';openModal('rem-modal');setTimeout(()=>document.getElementById('rem-text').focus(),50);}
+function saveRemModal(){const c=data.clients.find(x=>x.id===remClient);if(c)c.relembrete=document.getElementById('rem-text').value.trim();persist();closeModal('rem-modal');renderClients();}
 
-function openNewClient(){editingClient=null;document.getElementById('cm-title').textContent='Novo cliente';document.getElementById('cm-name').value='';document.getElementById('cm-del-area').innerHTML='';openModal('client-modal');setTimeout(function(){document.getElementById('cm-name').focus();},50);}
-function openEditClient(cid){editingClient=cid;const c=data.clients.find(function(x){return x.id===cid;});document.getElementById('cm-title').textContent='Editar cliente';document.getElementById('cm-name').value=c?c.name:'';document.getElementById('cm-del-area').innerHTML='<button class="del-client-btn" onclick="delClient(\''+cid+'\')">Remover cliente</button>';openModal('client-modal');}
-function saveClientModal(){const name=document.getElementById('cm-name').value.trim();if(!name)return;if(editingClient){const c=data.clients.find(function(x){return x.id===editingClient;});if(c)c.name=name;}else data.clients.push({id:'c'+(nid++),name:name,relembrete:''});persist();closeModal('client-modal');renderClients();}
-function delClient(cid){if(!confirm('Remover este cliente e todas as tarefas?'))return;data.clients=data.clients.filter(function(x){return x.id!==cid;});data.tasks=data.tasks.filter(function(x){return x.client!==cid;});persist();closeModal('client-modal');renderClients();}
+/* ===== CLIENTES CRUD ===== */
+function openNewClient(){editingClient=null;document.getElementById('cm-title').textContent='Novo cliente';document.getElementById('cm-name').value='';document.getElementById('cm-del-area').innerHTML='';openModal('client-modal');setTimeout(()=>document.getElementById('cm-name').focus(),50);}
+function openEditClient(cid){editingClient=cid;const c=data.clients.find(x=>x.id===cid);document.getElementById('cm-title').textContent='Editar cliente';document.getElementById('cm-name').value=c?c.name:'';document.getElementById('cm-del-area').innerHTML=`<button class="del-client-btn" onclick="delClient('${cid}')">🗑 Remover cliente</button>`;openModal('client-modal');}
+function saveClientModal(){const name=document.getElementById('cm-name').value.trim();if(!name)return;if(editingClient){const c=data.clients.find(x=>x.id===editingClient);if(c)c.name=name;}else data.clients.push({id:'c'+(nid++),name,relembrete:''});persist();closeModal('client-modal');renderClients();}
+function delClient(cid){if(!confirm('Remover este cliente e todas as tarefas?'))return;data.clients=data.clients.filter(x=>x.id!==cid);data.tasks=data.tasks.filter(x=>x.client!==cid);persist();closeModal('client-modal');renderClients();}
 
+/* ===== MINHA ESTAÇÃO ===== */
 function renderMinhasTarefas(){
   const list=document.getElementById('minha-list');
   if(!data.minhasTarefas||!data.minhasTarefas.length){
-    list.innerHTML='<div class="mt-empty">Suas tarefas pessoais aparecem aqui</div>';
+    list.innerHTML=`<div class="mt-empty">Suas tarefas pessoais aparecem aqui</div>`;
     return;
   }
-  list.innerHTML=data.minhasTarefas.map(function(t){
-    return '<div class="mt-row">'
-      +'<button class="mt-check'+(t.status==='feito'?' feito':'')+'" onclick="toggleMinhaTarefa(\''+t.id+'\')">'+(t.status==='feito'?'v':'')+'</button>'
-      +'<span class="mt-text'+(t.status==='feito'?' feito':'\'")>'+t.text+'</span>'
-      +'<button class="mt-del" onclick="delMinhaTarefa(\''+t.id+'\')">x</button>'
-      +'</div>';
-  }).join('');
+  list.innerHTML=data.minhasTarefas.map(t=>`<div class="mt-row">
+    <button class="mt-check${t.status==='feito'?' feito':''}" onclick="toggleMinhaTarefa('${t.id}')">${t.status==='feito'?'✓':''}</button>
+    <span class="mt-text${t.status==='feito'?' feito':''}">${t.text}</span>
+    <button class="mt-del" onclick="delMinhaTarefa('${t.id}')">✕</button>
+  </div>`).join('');
 }
 function addMinhaTarefa(){
   const inp=document.getElementById('mt-inp');
   const text=inp.value.trim();if(!text)return;
   if(!data.minhasTarefas)data.minhasTarefas=[];
-  data.minhasTarefas.push({id:'mt'+(nid++),text:text,status:'pendente'});
+  data.minhasTarefas.push({id:'mt'+(nid++),text,status:'pendente'});
   inp.value='';persist();renderMinhasTarefas();
 }
 function toggleMinhaTarefa(id){
-  const t=data.minhasTarefas?data.minhasTarefas.find(function(x){return x.id===id;}):null;if(!t)return;
+  const t=data.minhasTarefas?.find(x=>x.id===id);if(!t)return;
   t.status=t.status==='feito'?'pendente':'feito';
   persist();renderMinhasTarefas();
 }
 function delMinhaTarefa(id){
   if(!confirm('Remover esta tarefa?'))return;
-  data.minhasTarefas=data.minhasTarefas.filter(function(x){return x.id!==id;});
+  data.minhasTarefas=data.minhasTarefas.filter(x=>x.id!==id);
   persist();renderMinhasTarefas();
 }
 
 function render(){renderEq();renderClients();renderMinhasTarefas();}
 
-['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(function(id){
+['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>{
   document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
 });
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape')['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(function(id){document.getElementById(id).classList.remove('open');});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')['task-modal','rem-modal','client-modal','person-modal','eq-modal','setup-modal'].forEach(id=>document.getElementById(id).classList.remove('open'));
 });
 
 hydrate();
